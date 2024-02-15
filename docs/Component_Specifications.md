@@ -28,10 +28,10 @@ The diagram below depicts the interactions of the Recommendation System.
 ## Use Case 2: YouTube Summarizer System
 
 **Components**:
-- User Interface to prompt YouTube video URL and get a summary button\
-- YouTube Video URL control logic to ensure the URL is valid and has subtitles\
-- Summarization control logic\
-- User Interface to show the summary\
+- User Interface to prompt YouTube video URL and get a summary button
+- YouTube Video URL control logic to ensure the URL is valid and has subtitles
+- Summarization control logic
+- User Interface to show the summary
 
 **Youtube Transcript Module**
 - **Name**: processTranscripts\
