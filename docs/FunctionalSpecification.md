@@ -54,7 +54,7 @@ Some potential stories about users who use the TL;DW application can be found be
 **Wants**: Mary wants to receive a summary of a 3-hour-long lecture to determine if the technique is suitable for her project or not.\
 **Interaction methods**: Mary will provide a URL of the video and receive summarized sentences through a web application.\
 **Needs**: Mary wants to save time by reviewing new technology without watching lengthy videos.\
-**Skills**: Mary is a computer science major and prefers a user-friendly interface.\
+**Skills**: Mary is a computer science major and prefers a user-friendly interface.
 
 ## Use Cases: 
 
@@ -85,9 +85,9 @@ The YouTube video should contain subtitles or a transcript
 
 **Use Case 2: Obtain Summary from YouTube through URL**\
 
-**Objective**: The system shows a summarization of a YouTube video along with keywords.\
+**Objective**: The system shows a summarization of a YouTube video along with keywords.
 
-**Interactions**: \
+**Interactions**: 
   User: Inputs the URL for the YouTube video they watched
   System: Confirms if the URL is valid and it contains transcript/ subtitles. If yes, ask users if they wish to see the YouTube video summary or recommendations for TED talks and podcasts. Otherwise, it tells the user that the URL provided doesn’t meet expectations.
 
