@@ -60,7 +60,7 @@ Some potential stories about users who use the TL;DW application can be found be
 
 **Use Case 1: Obtain TED Talk Recommendations about Climate Change**\
 
-**Objective**: The system displays related podcasts and TED talks for the video input by the user \
+**Objective**: The system displays related podcasts and TED talks for the video input by the user.
 
 **Interactions**: \
   User: Inputs the URL for the YouTube video they watched (here about climate change)
@@ -83,7 +83,7 @@ The URL should be working
 The URL should lead to a YouTube video
 The YouTube video should contain subtitles or a transcript
 
-**Use Case 2: Obtain Summary from YouTube through URL**\
+**Use Case 2: Obtain Summary from YouTube through URL**
 
 **Objective**: The system shows a summarization of a YouTube video along with keywords.
 
