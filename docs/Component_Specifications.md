@@ -10,9 +10,9 @@ This document will contain information about the following:
 
 **Components:**
 - User Interface to prompt YouTube video URL and selection options between summary and the recommendation system, and then between podcasts and TED Talks
-- YouTube Video URL control logic to ensure it meets the specifications/
-- Recommendation System control logic/
-- User Interface for Recommendation System/
+- YouTube Video URL control logic to ensure it meets the specifications\
+- Recommendation System control logic\
+- User Interface for Recommendation System\
 
 **Recommendation System Control Logic:**
 - **Name**: Recommend
@@ -28,29 +28,29 @@ The diagram below depicts the interactions of the Recommendation System.
 ## Use Case 2: YouTube Summarizer System
 
 **Components**:
-- User Interface to prompt YouTube video URL and get a summary button
-- YouTube Video URL control logic to ensure the URL is valid and has subtitles
-- Summarization control logic
-- User Interface to show the summary
+- User Interface to prompt YouTube video URL and get a summary button\
+- YouTube Video URL control logic to ensure the URL is valid and has subtitles\
+- Summarization control logic\
+- User Interface to show the summary\
 
 **Youtube Transcript Module**
-- **Name**: processTranscripts
-- **What it does**: Getting a YouTube URL to crawl the transcript from users, crawls the transcript, and displays the result
-- **Input**: Youtube Video URL
-- **Output**: Crawled YouTube Transcript
-- **Assumptions**: The URL is valid, and the video has subtitles.
-- **How it uses other components**: The output will be used for a summarization component through GPT API.
+- **Name**: processTranscripts\
+- **What it does**: Getting a YouTube URL to crawl the transcript from users, crawls the transcript, and displays the result\
+- **Input**: Youtube Video URL\
+- **Output**: Crawled YouTube Transcript\
+- **Assumptions**: The URL is valid, and the video has subtitles.\
+- **How it uses other components**: The output will be used for a summarization component through GPT API.\
 
 The diagram below depicts the interactions of the components in the YouTube Transcript Module. 
 ![image](yttranscript_module.png)
 
 **Summarization Module:**
-**Name**: summarizeTranscripts
-**What it does**: Creates a summary of a YouTube video Transcript
-**Inputs**: Youtube Video Transcript
-**Outputs**: Summary of YouTube video
-**Assumptions**: The given transcript will be detailed enough to create a relevant summary, and GPT API has a valid key and quota.
-**How it uses other components**: Uses the Youtube Transcript Component to obtain YouTube video Transcript to summarize
+**Name**: summarizeTranscripts\
+**What it does**: Creates a summary of a YouTube video Transcript\
+**Inputs**: Youtube Video Transcript\
+**Outputs**: Summary of YouTube video\
+**Assumptions**: The given transcript will be detailed enough to create a relevant summary, and GPT API has a valid key and quota.\
+**How it uses other components**: Uses the Youtube Transcript Component to obtain YouTube video Transcript to summarize\
 
 The diagram below depicts the interactions of the components in the YouTube Transcript Module. 
 ![image](summarizer_module.png)
