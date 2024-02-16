@@ -35,12 +35,12 @@ The diagram below depicts the interactions of the Recommendation System. This sy
 - User Interface to show the summary
 
 **Youtube Transcript Module**
-- **Name**: processTranscripts\
-- **What it does**: Getting a YouTube URL to crawl the transcript from users, crawls the transcript, and displays the result\
-- **Input**: Youtube Video URL\
-- **Output**: Crawled YouTube Transcript\
-- **Assumptions**: The URL is valid, and the video has subtitles.\
-- **How it uses other components**: The output will be used for a summarization component through GPT API.\
+- **Name**: processTranscripts
+- **What it does**: Getting a YouTube URL to crawl the transcript from users, crawls the transcript, and displays the result
+- **Input**: Youtube Video URL
+- **Output**: Crawled YouTube Transcript
+- **Assumptions**: The URL is valid, and the video has subtitles.
+- **How it uses other components**: The output will be used for a summarization component through GPT API.
 
 The diagram below depicts the interactions of the components in the YouTube Transcript Module. This module takes in a given YouTube Video URL and passes the video ID from the YouTube link to the YouTube Transcript API. The API will then return a dictionary with subtitles and pass this to the system. The system will merge the dictionary together and display the merged transcript to the user. 
 
