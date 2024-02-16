@@ -22,7 +22,8 @@ This document will contain information about the following:
 - **Assumptions**: The summary outputted from the LLM Summarizer is an accurate representation of the YouTube video
 - **How it uses other component**s: The Recommendation module is connected to the LLM Summarizer because the recommendation algorithm will use the summary to generate a similarity score to find and display relevant TED talks and podcasts
 
-The diagram below depicts the interactions of the Recommendation System.  
+The diagram below depicts the interactions of the Recommendation System. This system takes in a YouTube URL provided by the user, and uses the Youtube Summary Module to obtain a summary of the video. Then this summary is given to the Recommendation module which will generate a similarity score to different TED Talks and Podcasts based on the user-inputted YouTube video. The system will take in these similarity scores and display the top 5 videos to the user. 
+
 ![image](recommendation_module.png)
 
 ## Use Case 2: YouTube Summarizer System
@@ -41,7 +42,8 @@ The diagram below depicts the interactions of the Recommendation System.
 - **Assumptions**: The URL is valid, and the video has subtitles.\
 - **How it uses other components**: The output will be used for a summarization component through GPT API.\
 
-The diagram below depicts the interactions of the components in the YouTube Transcript Module. 
+The diagram below depicts the interactions of the components in the YouTube Transcript Module. This module takes in a given YouTube Video URL and passes the video ID from the YouTube link to the YouTube Transcript API. The API will then return a dictionary with subtitles and pass this to the system. The system will merge the dictionary together and display the merged transcript to the user. 
+
 ![image](yttranscript_module.png)
 
 **Summarization Module:**
@@ -52,12 +54,13 @@ The diagram below depicts the interactions of the components in the YouTube Tran
 **Assumptions**: The given transcript will be detailed enough to create a relevant summary, and GPT API has a valid key and quota.\
 **How it uses other components**: Uses the Youtube Transcript Component to obtain YouTube video Transcript to summarize\
 
-The diagram below depicts the interactions of the components in the YouTube Transcript Module. 
+The diagram below depicts the interactions of the components in the Summarization Module. In this module, the user has selected to see a summary of the YouTube Video. If this is the case, then the system will use the Youtube Transcript Module first to obtain a transcript, and will then pass it to the Bard API. The Bard API will take in the transcript and return the summarized text to the system. The system will then display the summary to the user. 
+
 ![image](summarizer_module.png)
 
 ## Final Diagram
 
-Putting all of the above components together will complete our application. Below you can find a diagram of how our modules and components will interact with each other in a potential user workflow. 
+Putting all of the above components together will complete our application. Below, you can find a diagram of how our modules and components will interact with each other in a potential user workflow. 
 
 ![image](final_diagram.png)
 
