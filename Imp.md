@@ -9,3 +9,6 @@ Installations for YouTube Transcript:
 Installations for summarizer:
 1. pip install torch
 2. pip install transformers
+
+Installations for summarizer:
+1.  pip install google-generativeai
