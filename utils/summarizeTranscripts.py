@@ -1,10 +1,9 @@
-
-GEMINI_API_KEY = 'AIzaSyAIDOlnc6NVX9LCwvNNuF6zXqBWplJsVpM' # Anurag Key
+const apiKey = process.env.GEMINI_API_KEY
 
 # Gemini API
 import google.generativeai as genai
 
-genai.configure(api_key=GEMINI_API_KEY)
+genai.configure(api_key=apiKey)
 genai_model = genai.GenerativeModel('gemini-pro')
 
 # Extract information from text based on prompt instructions

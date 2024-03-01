@@ -37,21 +37,3 @@ if title:
     if keywords:
         st.header("Keywords")
         st.write(keywords)
-        # st.text_area(summary)
-
-# def main():
-#     # video_url = input("Please enter the YouTube video URL: ")
-#     transcript = getTranscript(title)
-#     txt = st.text_area(transcript)
-#     summary, _, _ = get_ai_extract("Summarize the following transcript in 150 words: ", transcript)
-#     # keywords, _, _ = get_ai_extract("Generate the top 10 most important keywords: ", transcript)
-#     # print(summary)
-#     # print(keywords)
-#     return transcript
-
-# txt = st.text_area(transcript)
-
-# st.write(f'You wrote {len(txt)} characters.')
-
-# if __name__ == '__main__':
-#     main()
