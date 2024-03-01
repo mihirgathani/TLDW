@@ -26,6 +26,17 @@ if title:
     if summary:
         st.header("Summary")
         st.write(summary)
+
+    st.divider()
+
+    with st.spinner('Getting keywords using Gemini...'):
+        keywords, _, _ = get_ai_extract("Generate the top 10 most important keywords: ", transcript)
+
+    st.success('Keywords is ready!')
+
+    if keywords:
+        st.header("Keywords")
+        st.write(keywords)
         # st.text_area(summary)
 
 # def main():

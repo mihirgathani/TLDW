@@ -1,56 +1,57 @@
-import datetime
-from unittest.mock import patch
-from streamlit.testing.v1 import AppTest
-from openai.types.chat import ChatCompletionMessage
-from openai.types.chat.chat_completion import ChatCompletion, Choice
+import streamlit as st
+import time
+from utils import getTranscript, get_ai_extract
 
+st.title("📝 TL;DW ")
+st.caption("🚀 Get a TED Talk Recommendation based on your interest!")
 
-# See https://github.com/openai/openai-python/issues/715#issuecomment-1809203346
-def create_chat_completion(response: str, role: str = "assistant") -> ChatCompletion:
-    return ChatCompletion(
-        id="foo",
-        model="gpt-3.5-turbo",
-        object="chat.completion",
-        choices=[
-            Choice(
-                finish_reason="stop",
-                index=0,
-                message=ChatCompletionMessage(
-                    content=response,
-                    role=role,
-                ),
-            )
-        ],
-        created=int(datetime.datetime.now().timestamp()),
-    )
+title = st.text_input('Youtube URL')
 
+if title:
+    with st.spinner('Getting transcript...'):
+        transcript = getTranscript(title)
+    st.success('Transcript is ready!')
 
-@patch("openai.resources.chat.Completions.create")
-def test_Chatbot(openai_create):
-    at = AppTest.from_file("Chatbot.py").run()
-    assert not at.exception
-    at.chat_input[0].set_value("Do you know any jokes?").run()
-    assert at.info[0].value == "Please add your OpenAI API key to continue."
+    if transcript:
+        st.header("Transcript")
+        st.write(transcript)
 
-    JOKE = "Why did the chicken cross the road? To get to the other side."
-    openai_create.return_value = create_chat_completion(JOKE)
-    at.text_input(key="chatbot_api_key").set_value("sk-...")
-    at.chat_input[0].set_value("Do you know any jokes?").run()
-    print(at)
-    assert at.chat_message[1].markdown[0].value == "Do you know any jokes?"
-    assert at.chat_message[2].markdown[0].value == JOKE
-    assert at.chat_message[2].avatar == "assistant"
-    assert not at.exception
+    st.divider()
 
+    with st.spinner('Summarizing using Gemini...'):
+        summary, _, _ = get_ai_extract("Summarize the following transcript in 150 words: ", transcript)
 
-@patch("langchain.llms.OpenAI.__call__")
-def test_Langchain_Quickstart(langchain_llm):
-    at = AppTest.from_file("pages/3_Langchain_Quickstart.py").run()
-    assert at.info[0].value == "Please add your OpenAI API key to continue."
+    st.success('Summary is ready!')
 
-    RESPONSE = "1. The best way to learn how to code is by practicing..."
-    langchain_llm.return_value = RESPONSE
-    at.sidebar.text_input[0].set_value("sk-...")
-    at.button[0].set_value(True).run()
-    print(at)
-    assert at.info[0].value == RESPONSE
+    if summary:
+        st.header("Summary")
+        st.write(summary)
+
+    st.divider()
+
+    with st.spinner('Getting keywords using Gemini...'):
+        keywords, _, _ = get_ai_extract("Generate the top 10 most important keywords: ", transcript)
+
+    st.success('Keywords is ready!')
+
+    if keywords:
+        st.header("Keywords")
+        st.write(keywords)
+        # st.text_area(summary)
+
+# def main():
+#     # video_url = input("Please enter the YouTube video URL: ")
+#     transcript = getTranscript(title)
+#     txt = st.text_area(transcript)
+#     summary, _, _ = get_ai_extract("Summarize the following transcript in 150 words: ", transcript)
+#     # keywords, _, _ = get_ai_extract("Generate the top 10 most important keywords: ", transcript)
+#     # print(summary)
+#     # print(keywords)
+#     return transcript
+
+# txt = st.text_area(transcript)
+
+# st.write(f'You wrote {len(txt)} characters.')
+
+# if __name__ == '__main__':
+#     main()
