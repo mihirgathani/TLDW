@@ -11,10 +11,10 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.tools import DuckDuckGoSearchRun
 from langchain_community.tools import DuckDuckGoSearchRun
 
-# apiKey = os.getenv("GEMINI_API_KEY")
-apiKey = "AIzaSyAIDOlnc6NVX9LCwvNNuF6zXqBWplJsVpM"
+api_key = os.getenv("GEMINI_API_KEY")
+# api_key = "AIzaSyAIDOlnc6NVX9LCwvNNuF6zXqBWplJsVpM"
 
-genai.configure(api_key=apiKey)
+genai.configure(api_key=api_key)
 genai_model = genai.GenerativeModel('gemini-pro')
 
 # Extract information from text based on prompt instructions
@@ -35,6 +35,7 @@ def getSearchResult(prompt):
         search_agent = initialize_agent(
             [search], llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True
         )
+
         with st.chat_message("assistant"):
             st_cb = StreamlitCallbackHandler(st.container(), expand_new_thoughts=False)
             response = search_agent.run(st.session_state.messages, callbacks=[st_cb])
