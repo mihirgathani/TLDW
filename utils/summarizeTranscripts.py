@@ -1,7 +1,8 @@
-const apiKey = process.env.GEMINI_API_KEY
-
+import os
 # Gemini API
 import google.generativeai as genai
+
+apiKey = os.getenv("GEMINI_API_KEY")
 
 genai.configure(api_key=apiKey)
 genai_model = genai.GenerativeModel('gemini-pro')

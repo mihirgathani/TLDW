@@ -1,5 +1,4 @@
 import streamlit as st
-import time
 from utils import getTranscript, get_ai_extract
 
 st.title("📝 TL;DW ")
