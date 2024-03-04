@@ -13,7 +13,7 @@ def get_video_id(youtube_url):
 
 def get_video_transcript(video_id):
     try:
-        transcriptDict = YouTubeTranscriptApi.get_transcript(video_id)
+        transcriptDict = YouTubeTranscriptApi.get_transcript(video_id, languages=['en-US', 'en'])
         formattedTranscript = formatTranscript(transcriptDict)
         if DEBUG_MODE:
             print("Processed transcript: " + formattedTranscript)
