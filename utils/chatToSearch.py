@@ -11,11 +11,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.tools import DuckDuckGoSearchRun
 from langchain_community.tools import DuckDuckGoSearchRun
 
-apiKey = os.getenv("GEMINI_API_KEY")
+# apiKey = os.getenv("GEMINI_API_KEY")
 apiKey = "AIzaSyAIDOlnc6NVX9LCwvNNuF6zXqBWplJsVpM"
-
-if "GEMINI_API_KEY" not in os.environ:
-    os.environ["GEMINI_API_KEY"] = getpass.getpass(apiKey)
 
 genai.configure(api_key=apiKey)
 genai_model = genai.GenerativeModel('gemini-pro')
