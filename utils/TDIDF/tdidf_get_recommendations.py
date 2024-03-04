@@ -4,10 +4,10 @@ import joblib
 
 def getTDIDFRecs(transcript_from_gemini):
     # Load preprocessed TED Talks data
-    df = pd.read_csv('tdidf_ted_preprocessed.csv')
+    df = pd.read_csv('../TLDW/tdidf_ted_preprocessed.csv')
 
     # Load TF-IDF vectorizer
-    tfidf_vectorizer = joblib.load('tfidf_vectorizer.joblib')
+    tfidf_vectorizer = joblib.load('../TLDW/tfidf_vectorizer.joblib')
 
     # Generate TF-IDF vector for transcript from Gemini
     gemini_tfidf_matrix = tfidf_vectorizer.transform([transcript_from_gemini])
@@ -22,10 +22,11 @@ def getTDIDFRecs(transcript_from_gemini):
     top_recommendations = df.nlargest(3, 'cosine_similarity')
 
     # Print top 3 recommendations
-    print("-------------------------------------------------------------")
-    print("Top 3 Recommendations - TDIDF:")
-    for i in range(3):
-        print("Recommendation", i + 1)
-        print("Title:", top_recommendations.iloc[i]["title"])
-        print("Similarity Score:", top_recommendations.iloc[i]["cosine_similarity"])
-        print()
+    #print("-------------------------------------------------------------")
+    #print("Top 3 Recommendations - TDIDF:")
+    #for i in range(3):
+        #print("Recommendation", i + 1)
+        #print("Title:", top_recommendations.iloc[i]["title"])
+        #print("Similarity Score:", top_recommendations.iloc[i]["cosine_similarity"])
+        #print()
+    return top_recommendations

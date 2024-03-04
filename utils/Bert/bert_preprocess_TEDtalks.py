@@ -10,7 +10,7 @@ def preprocess_bert():
     model_name = 'stsb-roberta-large'
     model = SentenceTransformer(model_name)
 
-    df = pd.read_csv(r"C:\Users\mihir\Downloads\ted_talks_en.csv\ted_talks_en.csv")
+    df = pd.read_csv("../TLDW/ted_talks_en.csv")
     ted_talks_descriptions = df["transcript"].tolist()  # List of transcripts of TED Talks
 
     # Generate SBERT embeddings for TED Talks dataset

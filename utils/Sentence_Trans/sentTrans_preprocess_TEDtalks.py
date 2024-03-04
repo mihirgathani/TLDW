@@ -5,7 +5,7 @@ import pickle
 
 def preprocess_sentTrans():
     # Load TED dataset
-    df = pd.read_csv(r"C:\Users\mihir\Downloads\Check_TED.csv")
+    df = pd.read_csv("../TLDW/ted_talks_en.csv")
     ted_titles = df["title"].tolist()
     ted_transcripts = df["transcript"].tolist()
 
@@ -24,5 +24,5 @@ def preprocess_sentTrans():
         ted_embeddings.append(transcript_embedding)
 
     # Save TED embeddings to a file
-    with open('ted_sentTrans_embeddings.pkl', 'wb') as f:
+    with open('../TLDW/ted_sentTrans_embeddings.pkl', 'wb') as f:
         pickle.dump(ted_embeddings, f)
