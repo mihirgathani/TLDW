@@ -96,7 +96,7 @@ if title:
 
     # Display recommender buttons based on content type choice
     if selected_content_type:
-        st.write(f"Choose a recommender to get recommendations for {selected_content_type}:")
+        st.write(f"Choose a recommender to get recommendations for {content_type}:")
         col1, col2, col3 = st.columns(3)
 
         # SBERT Recommender button
@@ -119,6 +119,8 @@ if title:
             if tf_idf_recs is not None and not tf_idf_recs.empty:
                 st.header('Top 3 TF-IDF Recommendations')
                 create_accordion_recs(tf_idf_recs.head(3))
+
+    st.divider()
 
     st.header("🔎 Learn More - Chat with GEMINI ")
     st.write("If you want to learn more about the content, ask GEMINI using this chat function!")
