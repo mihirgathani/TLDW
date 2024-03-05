@@ -1,8 +1,8 @@
-from utils import getTranscript, get_ai_extract, chatToSearch, preprocess_bert, getBertRecs, preprocess_sentTrans, getSentTransRecs, preprocess_TDIDF, getTDIDFRecs
+from utils import get_transcript, get_ai_extract, chatToSearch, preprocess_bert, getBertRecs, preprocess_sentTrans, getSentTransRecs, preprocess_TDIDF, getTDIDFRecs
 
 def main():
     video_url = input("Please enter the YouTube video URL: ")
-    transcript = getTranscript(video_url)
+    transcript = get_transcript(video_url)
     summary, _, _ = get_ai_extract("Summarize this transcript within 250 words, output a paragraph: ", transcript)
     keywords, _, _ = get_ai_extract("Generate the top 10 most important keywords: ", transcript)
     print("This is the summary of the transcript:")

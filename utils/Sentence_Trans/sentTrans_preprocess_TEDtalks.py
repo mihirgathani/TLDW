@@ -7,11 +7,11 @@ def preprocess_sentTrans(ted_or_podcast):
 
     if ted_or_podcast == "ted":
         # Load TED Talks Dataset
-        df = pd.read_csv(r"C:\Users\mihir\Downloads\ted_talks_en.csv\ted_talks_en.csv") # Update file location
+        df = pd.read_csv("../TLDW/ted_talks_en.csv") # Update file location
         transcripts = df["transcript"].tolist()  # List of transcripts
     else:
         # Load Podcast Dataset
-        df = pd.read_csv(r"C:\Users\mihir\Downloads\skeptoid_transcripts.csv\skeptoid_transcripts.csv") # Update file location
+        df = pd.read_csv("../TLDW/skeptoid_transcripts.csv") # Update file location
         transcripts = df["text"].tolist()  # List of transcripts
 
     # Load Sentence Transformer model
@@ -31,8 +31,8 @@ def preprocess_sentTrans(ted_or_podcast):
 
     # Save embeddings to a file
     if ted_or_podcast == "ted":
-        with open('ted_sentTrans_embeddings.pkl', 'wb') as f:
+        with open('../TLDW/ted_sentTrans_embeddings.pkl', 'wb') as f:
             pickle.dump(embeddings, f)
     else:
-        with open('podcast_sentTrans_embeddings.pkl', 'wb') as f:
+        with open('../TLDW/podcast_sentTrans_embeddings.pkl', 'wb') as f:
             pickle.dump(embeddings, f)

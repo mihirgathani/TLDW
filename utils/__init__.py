@@ -1,4 +1,4 @@
-from .processTranscripts import getTranscript
+from .process_transcripts import get_transcript
 from .summarizeTranscripts import get_ai_extract
 from .chatToSearch import getSearchResult
 from .Bert.bert_get_recommendations import getBertRecs
