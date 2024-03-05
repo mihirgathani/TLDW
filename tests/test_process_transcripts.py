@@ -3,7 +3,7 @@ Module for testing the processTranscripts module.
 """
 
 import unittest
-from utils.processTranscripts import get_video_id,\
+from utils.process_transcripts import get_video_id,\
 get_video_transcript, formatTranscript, getTranscript
 
 
