@@ -26,7 +26,7 @@ def main():
     # tdidf
     #preprocess_TDIDF("ted")
     getTDIDFRecs(transcript, "ted")
-    preprocess_TDIDF("podcast")
+    #preprocess_TDIDF("podcast")
     getTDIDFRecs(transcript, "podcast")
 
 
