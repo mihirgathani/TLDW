@@ -1,4 +1,4 @@
-from utils import getTranscript, get_ai_extract, chatToSearch, preprocess_bert, getBertRecs, preprocess_sentTrans, getSentTransRecs, preprocess_TDIDF, getTDIDFRecs
+from utils import getTranscript, get_ai_extract, chat_to_search, preprocess_bert, getBertRecs, preprocess_sentTrans, getSentTransRecs, preprocess_TDIDF, getTDIDFRecs
 
 def main():
     video_url = input("Please enter the YouTube video URL: ")
