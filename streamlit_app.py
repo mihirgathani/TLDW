@@ -89,7 +89,7 @@ if title:
         st.write(st.session_state.keywords)
 
     st.divider()
-    
+
     content_mapping = {"TED Talks": "ted", "Podcasts": "podcast"}
     content_type = st.radio("Choose Content Type", list(content_mapping.keys()))
     selected_content_type = content_mapping[content_type]
