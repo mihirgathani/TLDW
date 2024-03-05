@@ -1,31 +1,60 @@
+"""
+Streamlit App for TED Talk Recommendations.
+
+This app allows users to enter a YouTube URL, obtain the transcript,
+summary, and keywords using Gemini, and get recommendations for TED Talks
+using various recommendation algorithms.
+"""
+
 import streamlit as st
-import pandas as pd
-from utils import getTranscript, get_ai_extract, getBertRecs, getSentTransRecs, getTDIDFRecs
+from utils import (getTranscript, get_ai_extract, getBertRecs,
+                   getSentTransRecs, getTDIDFRecs, getSearchResult)
 
 st.title("📝 TL;DW ")
 st.caption("🚀 Get a TED Talk Recommendation based on your interest!")
 
 # Function to create accordion-style recommendations
 def create_accordion_recs(recommendations):
+    """
+    Creates an accordion-style display of recommendations.
+
+    Args:
+        recommendations (DataFrame): DataFrame containing recommendations with 
+        columns 'title', 'url', and 'cosine_similarity'.
+
+    Returns:
+        None
+    """
     i = 1
-    for index, row in recommendations.iterrows():
+    for _, row in recommendations.iterrows():
         with st.expander(f"Recommendation {i}: {row['title']}"):
             st.markdown("- **URL:** " + row['url'])
             st.markdown("- **Similarity Score:** " + str(round(row['cosine_similarity'], 2)))
         i += 1
 
 # Function to get transcript, summary, and keywords if not already obtained
-def get_transcript_summary_keywords(title):
+def get_transcript_summary_keywords(link):
+    """
+    Retrieves transcript, summary, and keywords for the provided YouTube video link.
+
+    Args:
+        link (str): The YouTube video link.
+
+    Returns:
+        None
+    """
     if 'transcript' not in st.session_state:
         with st.spinner('Getting transcript...'):
-            st.session_state.transcript = getTranscript(title)
+            st.session_state.transcript = getTranscript(link)
     if 'summary' not in st.session_state:
         with st.spinner('Summarizing using Gemini...'):
-            st.session_state.summary, _, _ = get_ai_extract("Summarize the following transcript in 150 words: ", st.session_state.transcript)
+            st.session_state.summary, _, _ = get_ai_extract(
+                "Summarize the following transcript in 150 words: ", st.session_state.transcript)
             st.success('Summary is ready!')
     if 'keywords' not in st.session_state:
         with st.spinner('Getting keywords using Gemini...'):
-            st.session_state.keywords, _, _ = get_ai_extract("Generate the top 10 most important keywords: ", st.session_state.transcript)
+            st.session_state.keywords, _, _ = get_ai_extract(
+                "Generate the top 10 most important keywords: ", st.session_state.transcript)
             st.success('Keywords are ready!')
 
 # Starting information
@@ -46,7 +75,7 @@ title = st.text_input('Youtube URL')
 if title:
     # Get transcript, summary, and keywords if not already obtained
     get_transcript_summary_keywords(title)
-    
+
     # Display summary if available
     if 'summary' in st.session_state:
         st.header("Summary")
@@ -84,3 +113,18 @@ if title:
         if tf_idf_recs is not None and not tf_idf_recs.empty:
             st.header('Top 3 TF-IDF Recommendations')
             create_accordion_recs(tf_idf_recs.head(3))
+
+    st.header("🔎 Learn More - Chat with GEMINI ")
+    st.write("If you want to learn more about the content, ask GEMINI using this chat function!")
+
+    if "messages" not in st.session_state:
+        st.session_state["messages"] = [
+            {"role": "assistant", "content":
+             "Hi, I'm a chatbot who can search the web. How can I help you?"}
+        ]
+
+    for msg in st.session_state.messages:
+        st.chat_message(msg["role"]).write(msg["content"])
+
+    if prompt := st.chat_input(placeholder="Type any questions you have about the YouTube video."):
+        st.write(getSearchResult(prompt))

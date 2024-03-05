@@ -11,8 +11,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.tools import DuckDuckGoSearchRun
 from langchain_community.tools import DuckDuckGoSearchRun
 
-api_key = os.getenv("GEMINI_API_KEY")
-# api_key = "AIzaSyAIDOlnc6NVX9LCwvNNuF6zXqBWplJsVpM"
+# api_key = os.getenv("GEMINI_API_KEY")
+api_key = "AIzaSyAIDOlnc6NVX9LCwvNNuF6zXqBWplJsVpM"
 
 genai.configure(api_key=api_key)
 genai_model = genai.GenerativeModel('gemini-pro')
@@ -22,11 +22,11 @@ def getSearchResult(prompt):
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
 
-    if not apiKey:
+    if not api_key:
         st.info("Please add your GEMINI API key to continue.")
         st.stop()
 
-    llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=apiKey)
+    llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=api_key)
 
     with st.spinner('Asking to GEMINI...'):
         result = llm.invoke(prompt)
