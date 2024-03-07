@@ -6,10 +6,6 @@ class TestStreamlitApp(unittest.TestCase):
     def setUp(self):
         self.at = AppTest.from_file('../../TLDW/streamlit_app.py', default_timeout=100).run()
 
-    def success_one_shot_test(self):
-        self.at.text_input[0].input("https://www.youtube.com/watch?v=dQw4w9WgXcQ").run()
-        selfself.at.success[0].value()
-
     def test_get_transcript_summary_keywords(self):
         self.at.text_input[0].input("https://www.youtube.com/watch?v=dQw4w9WgXcQ").run()
         self.assertIsNotNone(self.at.session_state.transcript)
