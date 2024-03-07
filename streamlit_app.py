@@ -93,7 +93,8 @@ if title:
     content_mapping = {"TED Talks": "ted", "Podcasts": "podcast"}
     content_type = st.radio("Choose Content Type", list(content_mapping.keys()))
     selected_content_type = content_mapping[content_type]
-
+    st.session_state.selected_content_type = selected_content_type
+    
     # Display recommender buttons based on content type choice
     if selected_content_type:
         st.write(f"Choose a recommender to get recommendations for {content_type}:")

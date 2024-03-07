@@ -1,6 +1,6 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 
-DEBUG_MODE = True
+DEBUG_MODE = False
 
 def get_video_id(youtube_url):
     # Split the URL by "=" sign
