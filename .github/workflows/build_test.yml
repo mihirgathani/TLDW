@@ -46,7 +46,7 @@ jobs:
     # The actual workflow steps!
     steps:
       # First, check out the repository for the current branch.
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@main
 
       # Then set up Python with a python version from the matrix.
       - name: Set up Python ${{ matrix.python-version }}
