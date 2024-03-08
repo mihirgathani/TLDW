@@ -6,11 +6,16 @@ class TestStreamlitApp(unittest.TestCase):
     def setUp(self):
         self.at = AppTest.from_file('../../TLDW/streamlit_app.py', default_timeout=100).run()
 
+    def test_empty_youtube(self):
+        self.at.text_input[0].input(" ").run()
+        self.assertTrue("TypeError")
+
     def test_get_transcript_summary_keywords(self):
         self.at.text_input[0].input("https://www.youtube.com/watch?v=dQw4w9WgXcQ").run()
         self.assertIsNotNone(self.at.session_state.transcript)
         self.assertIsNotNone(self.at.session_state.summary)
         self.assertIsNotNone(self.at.session_state.keywords)
+        print("hello?")
 
     def test_selected_content_type_ted(self):
         self.at.text_input[0].input("https://www.youtube.com/watch?v=dQw4w9WgXcQ").run()
@@ -51,7 +56,7 @@ class TestStreamlitApp(unittest.TestCase):
         self.assertEqual(self.at.header[2].value, "🔎 Learn More - Chat with GEMINI")
         self.at.chat_input[0].set_value("What is rick-rolling?").run()
         self.assertEqual(self.at.chat_message[1].markdown[0].value, "What is rick-rolling?")
-        self.assertIsNotNone(self.at.chat_message[0].markdown[0].value)        
+        self.assertIsNotNone(self.at.chat_message[0].markdown[0].value) 
 
 if __name__ == "__main__":
     unittest.main()

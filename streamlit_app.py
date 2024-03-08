@@ -137,3 +137,4 @@ if title:
 
     if prompt := st.chat_input(placeholder="Type any questions you have about the YouTube video."):
         st.write(getSearchResult(prompt))
+
