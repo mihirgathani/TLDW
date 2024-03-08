@@ -16,12 +16,13 @@ def preprocess_sentTrans():
     # Create embeddings for TED transcripts and chunk them
     chunk_size = 256
 
-    ted_embeddings = []
-    for transcript in ted_transcripts:
-        chunks = [transcript[i:i+chunk_size] for i in range(0, len(transcript), chunk_size)]
-        chunk_embeddings = [model.encode(chunk) for chunk in chunks]
-        transcript_embedding = np.mean(chunk_embeddings, axis=0)
-        ted_embeddings.append(transcript_embedding)
+    embeddings = []
+    for transcript in transcripts:
+        if type(transcript) == str:
+            chunks = [transcript[i:i+chunk_size] for i in range(0, len(transcript), chunk_size)]
+            chunk_embeddings = [model.encode(chunk) for chunk in chunks]
+            transcript_embedding = np.mean(chunk_embeddings, axis=0)
+            embeddings.append(transcript_embedding)
 
     # Save TED embeddings to a file
     with open('../TLDW/ted_sentTrans_embeddings.pkl', 'wb') as f:

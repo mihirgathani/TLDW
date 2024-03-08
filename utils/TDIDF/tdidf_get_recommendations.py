@@ -9,11 +9,12 @@ def getTDIDFRecs(transcript_from_gemini):
     # Load TF-IDF vectorizer
     tfidf_vectorizer = joblib.load('../TLDW/tfidf_vectorizer.joblib')
 
+    
     # Generate TF-IDF vector for transcript from Gemini
     gemini_tfidf_matrix = tfidf_vectorizer.transform([transcript_from_gemini])
 
     # Calculate cosine similarity between Gemini's TF-IDF vector and TED Talks TF-IDF vectors
-    cosine_similarities = cosine_similarity(gemini_tfidf_matrix, tfidf_vectorizer.transform(df['transcript'])).flatten()
+    cosine_similarities = cosine_similarity(gemini_tfidf_matrix, tfidf_vectorizer.transform(transcripts)).flatten()
 
     # Add cosine similarities as a column in the DataFrame
     df['cosine_similarity'] = cosine_similarities

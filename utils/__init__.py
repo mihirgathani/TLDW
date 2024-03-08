@@ -1,5 +1,5 @@
-from .processTranscripts import getTranscript
-from .summarizeTranscripts import get_ai_extract
+from .process_transcripts import getTranscript
+from .summarize_transcripts import get_ai_extract
 from .chat_to_search import get_search_result
 from .Bert.bert_get_recommendations import getBertRecs
 from .Bert.bert_preprocess_TEDtalks import preprocess_bert

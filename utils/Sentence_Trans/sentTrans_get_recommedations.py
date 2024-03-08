@@ -5,7 +5,22 @@ import numpy as np
 import pandas as pd
 
 # Function to get recommendations using precomputed embeddings
-def getSentTransRecs(input_transcript):
+def getSentTransRecs(input_transcript, ted_or_podcast):
+    
+    if ted_or_podcast == "ted":
+        # Load TED Talks Dataset
+        df = pd.read_csv(r"C:\Users\mihir\Downloads\ted_talks_en.csv\ted_talks_en.csv") # Update file location
+        with open('ted_sentTrans_embeddings.pkl', 'rb') as f:
+            embeddings = pickle.load(f)
+        transcripts = df["transcript"].tolist()
+    else:
+        # Load Podcast Dataset
+        df = pd.read_csv(r"C:\Users\mihir\Downloads\skeptoid_transcripts.csv\skeptoid_transcripts.csv") # Update file location
+        with open('podcast_sentTrans_embeddings.pkl', 'rb') as f:
+            embeddings = pickle.load(f)
+        transcripts = df["text"].tolist()
+
+    titles = df["title"].tolist()
 
     # Load Sentence Transformer model
     model_name = "sentence-transformers/all-MiniLM-L6-v2"
@@ -28,7 +43,7 @@ def getSentTransRecs(input_transcript):
     user_input_embedding = np.mean([model.encode(chunk) for chunk in chunks], axis=0)
 
     # Compute cosine similarity between user input and TED transcripts
-    similarity_scores = cosine_similarity([user_input_embedding], ted_embeddings)[0]
+    similarity_scores = cosine_similarity([user_input_embedding], embeddings)[0]
 
     # Rank transcripts based on similarity scores
     ranked_transcripts = sorted(zip(ted_titles, ted_urls, similarity_scores), key=lambda x: x[1], reverse=True)
