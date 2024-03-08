@@ -42,11 +42,10 @@ jobs:
       matrix:
         python-version: ["3.9"]
         # python-version: ["3.9", "3.10", "3.11"]
-
     # The actual workflow steps!
     steps:
-    # First, check out the repository for the current branch.
-      - uses: actions/checkout@main
+      # First, check out the repository for the current branch.
+      - uses: actions/checkout@v3
 
       # Then set up Python with a python version from the matrix.
       - name: Set up Python ${{ matrix.python-version }}
