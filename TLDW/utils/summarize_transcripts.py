@@ -4,7 +4,7 @@ Module for summarizing transcripts using Gemini AI API.
 
 # Gemini API
 import google.generativeai as genai
-
+import os
 # .env
 from dotenv import load_dotenv
 # load .env
