@@ -15,10 +15,12 @@ class TestGetAIExtract(unittest.TestCase):
         """
         Test when the prompt is blank.
         """
-        get_ai_extract('', 'hello')
+        with self.assertRaises(ValueError):
+            get_ai_extract('', 'hello')
 
     def test_text_blank(self):
         """
         Test when the text is blank.
         """
-        get_ai_extract('hello','')
+        with self.assertRaises(ValueError):
+            get_ai_extract('hello','')

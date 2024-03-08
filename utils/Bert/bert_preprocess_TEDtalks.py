@@ -18,8 +18,11 @@ def preprocess_bert(ted_or_podcast):
     model_name = 'stsb-roberta-large'
     model = SentenceTransformer(model_name)
 
-    # Generate Roberta embeddings for dataset
-    embeddings = model.encode(transcripts, show_progress_bar=True)
+    df = pd.read_csv("../TLDW/ted_talks_en.csv")
+    ted_talks_descriptions = df["transcript"].tolist()  # List of transcripts of TED Talks
+
+    # Generate SBERT embeddings for TED Talks dataset
+    ted_embeddings = model.encode(ted_talks_descriptions, show_progress_bar=True)
 
     # Save the embeddings to a file
     if ted_or_podcast == "ted":

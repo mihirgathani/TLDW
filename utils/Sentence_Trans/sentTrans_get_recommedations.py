@@ -25,6 +25,17 @@ def getSentTransRecs(input_transcript, ted_or_podcast):
     # Load Sentence Transformer model
     model_name = "sentence-transformers/all-MiniLM-L6-v2"
     model = SentenceTransformer(model_name)
+    
+    #df = pd.read_csv(r"C:\Users\mihir\Downloads\Check_TED.csv")
+    df = pd.read_csv("../TLDW/ted_talks_en.csv")
+
+    ted_titles = df["title"].tolist()
+    ted_urls = df["url"].tolist()
+
+    
+    # Load TED embeddings from file
+    with open('../TLDW/ted_sentTrans_embeddings.pkl', 'rb') as f:
+        ted_embeddings = pickle.load(f)
 
     # Encode user input in chunks
     chunk_size = 256
@@ -35,16 +46,19 @@ def getSentTransRecs(input_transcript, ted_or_podcast):
     similarity_scores = cosine_similarity([user_input_embedding], embeddings)[0]
 
     # Rank transcripts based on similarity scores
-    ranked_transcripts = sorted(zip(titles, similarity_scores), key=lambda x: x[1], reverse=True)
+    ranked_transcripts = sorted(zip(ted_titles, ted_urls, similarity_scores), key=lambda x: x[1], reverse=True)
 
     # Get top 3 recommendations
     top_recommendations = ranked_transcripts[:3]
+    top_recommendations_df = pd.DataFrame(top_recommendations, columns=["title", "url", "cosine_similarity"])
+
+    return top_recommendations_df
 
     # Print top 3 recommendations
-    print("-------------------------------------------------------------")
-    print(f"Top 3 Recommendations for {ted_or_podcast} - Model all-MiniLM-L6-v2:")
-    for i, (recommendation, similarity_score) in enumerate(top_recommendations, 1):
-        print(f"Recommendation {i}")
-        print(f"Title: {recommendation}")
-        print(f"Similarity Score: {similarity_score}")
-        print()
+    #print("-------------------------------------------------------------")
+    #print("Top 3 Recommendations - Sentence Transformer -> all-MiniLM-L6-v2:")
+    #for i, (recommendation, similarity_score) in enumerate(top_recommendations, 1):
+        #print(f"Recommendation {i}")
+        #print(f"Title: {recommendation}")
+        #print(f"Similarity Score: {similarity_score}")
+        #print()
