@@ -3,19 +3,13 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer, util
 import pandas as pd
 
-def getBertRecs(user_transcript, ted_or_podcast):
+def getBertRecs(user_transcript):
     # Load pre-trained SBERT model
     model_name = 'stsb-roberta-large'
     model = SentenceTransformer(model_name)
 
-    if ted_or_podcast == "ted":
-        # Load preprocessed TED Talks embeddings and TED Dataset
-        embeddings = torch.load('ted_sbert_embeddings.pt')
-        df = pd.read_csv(r"C:\Users\mihir\Downloads\ted_talks_en.csv\ted_talks_en.csv") # Update file location
-    else:
-        # Load preprocessed Podcast Talks embeddings and Podcast Dataset
-        embeddings = torch.load('podcast_sbert_embeddings.pt')
-        df = pd.read_csv(r"C:\Users\mihir\Downloads\skeptoid_transcripts.csv\skeptoid_transcripts.csv") # Update file location
+    # Load preprocessed TED Talks embeddings
+    ted_embeddings = torch.load('ted_sbert_embeddings.pt')
 
     # Sample data (replace with your actual data)
     #df = pd.read_csv(r"C:\Users\mihir\Downloads\Check_TED.csv")
@@ -27,7 +21,7 @@ def getBertRecs(user_transcript, ted_or_podcast):
     user_embedding = model.encode(user_transcript)
 
     # Calculate cosine similarity between the user transcript embedding and all TED Talks embeddings
-    similarities = util.cos_sim(user_embedding, embeddings)
+    similarities = util.cos_sim(user_embedding, ted_embeddings)
 
     # Create a DataFrame with TED Talks titles, descriptions, and cosine similarities
     ted_talks_df = pd.DataFrame({'title': ted_talks_titles, 'cosine_similarity': similarities.flatten(), 'url': df['url']})

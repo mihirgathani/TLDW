@@ -1,4 +1,4 @@
-# Load .env to get api key
+# .env
 from dotenv import load_dotenv
 import os
 
