@@ -5,7 +5,11 @@ Module for summarizing transcripts using Gemini AI API.
 # Gemini API
 import google.generativeai as genai
 
-GEMINI_API_KEY = 'AIzaSyAIDOlnc6NVX9LCwvNNuF6zXqBWplJsVpM' # Anurag Key
+# .env
+from dotenv import load_dotenv
+# load .env
+load_dotenv()
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
 
 
 
