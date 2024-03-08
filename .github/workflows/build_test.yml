@@ -36,7 +36,6 @@ jobs:
     defaults:
       run:
         shell: bash -el {0}
-
     # We specify all versions of Python that we want to validate.
     # GitHub will run the tests for each of these Python versions.
     strategy:
