@@ -1,5 +1,10 @@
+# .env
+from dotenv import load_dotenv
+import os
 
-GEMINI_API_KEY = 'AIzaSyAIDOlnc6NVX9LCwvNNuF6zXqBWplJsVpM' # Anurag Key
+# load .env
+load_dotenv()
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
 
 # Gemini API
 import google.generativeai as genai
