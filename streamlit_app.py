@@ -7,8 +7,8 @@ using various recommendation algorithms.
 """
 
 import streamlit as st
-from utils import (get_transcript, get_ai_extract, getBertRecs,
-                   getSentTransRecs, getTDIDFRecs, getSearchResult)
+from utils import (getTranscript, get_ai_extract, getBertRecs,
+                   getSentTransRecs, getTDIDFRecs, get_search_result)
 
 st.title("📝 TL;DW ")
 st.caption("🚀 Get a TED Talk Recommendation based on your interest!")
@@ -136,5 +136,4 @@ if title:
         st.chat_message(msg["role"]).write(msg["content"])
 
     if prompt := st.chat_input(placeholder="Type any questions you have about the YouTube video."):
-        st.write(getSearchResult(prompt))
-
+        st.write(get_search_result(st.session_state.transcript, prompt))

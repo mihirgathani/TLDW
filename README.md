@@ -1,4 +1,9 @@
-# TLDW: UW MSDS DATA515 Summarization Tool with LLMs
+# Continuous Integration Example Repository
+
+![Build/Test Workflow](https://github.com/JoobeeJung/TLDW/actions/workflows/build_test.yml/badge.svg)
+[![Coverage Status](https://coveralls.io/github/JoobeeJung/TLDW/badge.svg?branch=main)](https://coveralls.io/github/JoobeeJung/TLDW/?branch=main)
+
+# TL;DW: UW MSDS DATA515 Summarization Tool with LLMs
 
 ## The Project Type: Recommendation + Summarization System
 ## Questions of Interest

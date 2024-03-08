@@ -2,25 +2,18 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 import joblib
 
-def getTDIDFRecs(transcript_from_gemini, ted_or_podcast):
-    # Load preprocessed dataset and embeddings
-    if ted_or_podcast == "ted":
-        # Load TED Talks Dataset
-        df = pd.read_csv("../TLDW/ted_tdidf_preprocessed.csv") # Update file location
-        tfidf_vectorizer = joblib.load('../TLDW/ted_tfidf_vectorizer.joblib')
-        transcripts = df['transcript']
-    else:
-        # Load Podcast Dataset
-        df = pd.read_csv("../TLDW/podcast_tdidf_preprocessed.csv") # Update file location
-        tfidf_vectorizer = joblib.load('../TLDW/podcast_tfidf_vectorizer.joblib')
-        transcripts = df['text'].dropna().tolist()
+def getTDIDFRecs(transcript_from_gemini):
+    # Load preprocessed TED Talks data
+    df = pd.read_csv('../TLDW/tdidf_ted_preprocessed.csv')
 
-    
+    # Load TF-IDF vectorizer
+    tfidf_vectorizer = joblib.load('../TLDW/tfidf_vectorizer.joblib')
+
     # Generate TF-IDF vector for transcript from Gemini
     gemini_tfidf_matrix = tfidf_vectorizer.transform([transcript_from_gemini])
 
     # Calculate cosine similarity between Gemini's TF-IDF vector and TED Talks TF-IDF vectors
-    cosine_similarities = cosine_similarity(gemini_tfidf_matrix, tfidf_vectorizer.transform(transcripts)).flatten()
+    cosine_similarities = cosine_similarity(gemini_tfidf_matrix, tfidf_vectorizer.transform(df['transcript'])).flatten()
 
     # Add cosine similarities as a column in the DataFrame
     df['cosine_similarity'] = cosine_similarities
