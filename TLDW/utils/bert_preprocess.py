@@ -32,12 +32,12 @@ def preprocess_bert(ted_or_podcast):
 
     if ted_or_podcast == "ted":
         # Load TED Talks Dataset
-        filepath = "./ted_talks_en.csv"
+        filepath = "../TLDW/data/ted_talks_en.csv"
         ted_df = pd.read_csv(filepath)
         transcripts = ted_df["transcript"].tolist()  # List of transcripts
     else:
         # Load Podcast Dataset
-        filepath = "./skeptoid_transcripts.csv"
+        filepath = "../TLDW/data/skeptoid_transcripts.csv"
         podcast_df = pd.read_csv(filepath)
         transcripts = podcast_df["text"].tolist()  # List of transcripts
 
@@ -50,6 +50,6 @@ def preprocess_bert(ted_or_podcast):
 
     # Save the embeddings to a file
     if ted_or_podcast == "ted":
-        torch.save(embeddings, 'ted_sbert_embeddings.pt')
+        torch.save(embeddings, 'ted_sbert_embeddings2.pt')
     else:
-        torch.save(embeddings, 'podcast_sbert_embeddings.pt')
+        torch.save(embeddings, 'podcast_sbert_embeddings2.pt')

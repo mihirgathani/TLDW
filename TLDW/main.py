@@ -11,19 +11,19 @@ def main():
     video_url = input("Please enter the YouTube video URL: ")
     transcript = get_transcript(video_url)
     # print(transcript)
-    summary, _, _ = get_ai_extract("Summarize this transcript within 250 words, output a paragraph: ", transcript)
-    keywords, _, _ = get_ai_extract("Generate the top 10 most important keywords: ", transcript)
-    print("This is the summary of the transcript:")
-    print(summary)
-    print("----------------------------------------------------------------")
-    print("These are the top 10 keywords:")
-    print(keywords)
+    #summary = get_ai_extract("Summarize this transcript within 250 words, output a paragraph: ", transcript)
+    #keywords = get_ai_extract("Generate the top 10 most important keywords: ", transcript)
+    # print("This is the summary of the transcript:")
+    # print(summary)
+    # print("----------------------------------------------------------------")
+    # print("These are the top 10 keywords:")
+    # print(keywords)
 
     # Roberta
-    # preprocess_bert("ted")
-    # get_bert_recs(transcript, "ted")
-    # preprocess_bert("podcast")
-    # get_bert_recs(transcript, "podcast")
+    #preprocess_bert("ted")
+    #get_bert_recs(transcript, "ted")
+    #preprocess_bert("podcast")
+    #get_bert_recs(transcript, "podcast")
 
     # # Sentence-transformer -> all-MiniLM-L6-v2
     # preprocess_minilm("ted")
@@ -33,9 +33,9 @@ def main():
 
     # # tdidf
     # preprocess_tdidf("ted")
-    # get_tdidf_recs(transcript, "ted")
+    get_tdidf_recs(transcript, "ted")
     # preprocess_tdidf("podcast")
-    # get_tdidf_recs(transcript, "podcast")
+    get_tdidf_recs(transcript, "podcast")
 
 
 if __name__ == '__main__':
