@@ -7,8 +7,14 @@ using various recommendation algorithms.
 """
 
 import streamlit as st
-from utils import (getTranscript, get_ai_extract, getBertRecs,
-                   getSentTransRecs, getTDIDFRecs, get_search_result)
+
+from utils.process_transcripts import get_transcript
+from utils.summarize_transcripts import get_ai_extract
+from utils.bert_get_recommendations import get_bert_recs
+from utils.minilm_get_recommedations import get_minilm_recs
+from utils.tdidf_get_recommendations import get_tdidf_recs
+from utils.chat_to_search import get_search_result
+
 
 st.title("📝 TL;DW ")
 st.caption("🚀 Get a TED Talk Recommendation based on your interest!")
@@ -102,21 +108,21 @@ if title:
 
         # SBERT Recommender button
         if col1.button('SBERT Recommender', type='primary'):
-            bert_recs = getBertRecs(st.session_state.transcript, selected_content_type)
+            bert_recs = get_bert_recs(st.session_state.transcript, selected_content_type)
             if bert_recs is not None and not bert_recs.empty:
                 st.header('Top 3 SBERT Recommendations')
                 create_accordion_recs(bert_recs.head(3))
 
         # MiniLM Recommender button
         if col2.button('MiniLM Recommender', type='primary'):
-            miniLM_recs = getSentTransRecs(st.session_state.transcript, selected_content_type)
+            miniLM_recs = get_minilm_recs(st.session_state.transcript, selected_content_type)
             if miniLM_recs is not None and not miniLM_recs.empty:
                 st.header('Top 3 MiniLM Recommendations')
                 create_accordion_recs(miniLM_recs.head(3))
 
         # TF-IDF Recommender button
         if col3.button('TF-IDF Recommender', type='primary'):
-            tf_idf_recs = getTDIDFRecs(st.session_state.transcript, selected_content_type)
+            tf_idf_recs = get_tdidf_recs(st.session_state.transcript, selected_content_type)
             if tf_idf_recs is not None and not tf_idf_recs.empty:
                 st.header('Top 3 TF-IDF Recommendations')
                 create_accordion_recs(tf_idf_recs.head(3))

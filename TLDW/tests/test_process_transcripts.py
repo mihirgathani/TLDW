@@ -4,7 +4,7 @@ Module for testing the processTranscripts module.
 
 import unittest
 from utils.process_transcripts import get_video_id,\
-get_video_transcript, formatTranscript, getTranscript
+get_video_transcript, formatTranscript, get_transcript
 
 
 class TestProcessTranscripts(unittest.TestCase):
@@ -15,7 +15,7 @@ class TestProcessTranscripts(unittest.TestCase):
     def test_smoke(self):
         """Smoke test to check if transcript can be fetched."""
         with self.assertRaises(ValueError):
-            getTranscript('https://www.youtube.com/watch?v=tlWuP7wESZw')
+            get_transcript('https://www.youtube.com/watch?v=tlWuP7wESZw')
 
     def test_video_id_blank(self):
         """Test handling of blank video ID."""
@@ -50,4 +50,4 @@ class TestProcessTranscripts(unittest.TestCase):
     def test_invalid_url(self):
         """Test handling of invalid URL."""
         with self.assertRaises(ValueError):
-            getTranscript('https://www.reddit.com/watch?v=LpP4rtjACM8')
+            get_transcript('https://www.reddit.com/watch?v=LpP4rtjACM8')
