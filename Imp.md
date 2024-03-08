@@ -12,3 +12,13 @@ Installations for summarizer:
 
 Installations for summarizer:
 1.  pip install google-generativeai
+
+Installations for chatbot:
+1. pip install langchain
+2. pip install langchain-google-genai
+3. pip install -U duckduckgo-search
+4. pip install -U langchain-community
+5. pip install llama-index
+
+Error Message -> OMP: Error #15: Initializing libiomp5.dylib, but found libiomp5.dylib already initialized.
+Solution -> conda install nomkl

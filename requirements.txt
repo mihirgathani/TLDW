@@ -1,0 +1,7 @@
+google-ai-generativelanguage
+google-api-core
+google-auth
+google-generativeai
+googleapis-common-protos
+streamlit
+youtube-transcript-api
