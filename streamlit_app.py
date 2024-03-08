@@ -45,7 +45,7 @@ def get_transcript_summary_keywords(link):
     """
     if 'transcript' not in st.session_state:
         with st.spinner('Getting transcript...'):
-            st.session_state.transcript = getTranscript(link)
+            st.session_state.transcript = get_transcript(link)
     if 'summary' not in st.session_state:
         with st.spinner('Summarizing using Gemini...'):
             st.session_state.summary, _, _ = get_ai_extract(
@@ -90,29 +90,38 @@ if title:
 
     st.divider()
 
-    st.write('Choose a recommender to get recommendations:')
-    col1, col2, col3 = st.columns(3)
+    content_mapping = {"TED Talks": "ted", "Podcasts": "podcast"}
+    content_type = st.radio("Choose Content Type", list(content_mapping.keys()))
+    selected_content_type = content_mapping[content_type]
+    st.session_state.selected_content_type = selected_content_type
+    
+    # Display recommender buttons based on content type choice
+    if selected_content_type:
+        st.write(f"Choose a recommender to get recommendations for {content_type}:")
+        col1, col2, col3 = st.columns(3)
 
-    # SBERT Recommender button
-    if col1.button('SBERT Recommender', type='primary'):
-        bert_recs = getBertRecs(st.session_state.transcript)
-        if bert_recs is not None and not bert_recs.empty:
-            st.header('Top 3 SBERT Recommendations')
-            create_accordion_recs(bert_recs.head(3))
+        # SBERT Recommender button
+        if col1.button('SBERT Recommender', type='primary'):
+            bert_recs = getBertRecs(st.session_state.transcript, selected_content_type)
+            if bert_recs is not None and not bert_recs.empty:
+                st.header('Top 3 SBERT Recommendations')
+                create_accordion_recs(bert_recs.head(3))
 
-    # MiniLM Recommender button
-    if col2.button('MiniLM Recommender', type='primary'):
-        miniLM_recs = getSentTransRecs(st.session_state.transcript)
-        if miniLM_recs is not None and not miniLM_recs.empty:
-            st.header('Top 3 MiniLM Recommendations')
-            create_accordion_recs(miniLM_recs.head(3))
+        # MiniLM Recommender button
+        if col2.button('MiniLM Recommender', type='primary'):
+            miniLM_recs = getSentTransRecs(st.session_state.transcript, selected_content_type)
+            if miniLM_recs is not None and not miniLM_recs.empty:
+                st.header('Top 3 MiniLM Recommendations')
+                create_accordion_recs(miniLM_recs.head(3))
 
-    # TF-IDF Recommender button
-    if col3.button('TF-IDF Recommender', type='primary'):
-        tf_idf_recs = getTDIDFRecs(st.session_state.transcript)
-        if tf_idf_recs is not None and not tf_idf_recs.empty:
-            st.header('Top 3 TF-IDF Recommendations')
-            create_accordion_recs(tf_idf_recs.head(3))
+        # TF-IDF Recommender button
+        if col3.button('TF-IDF Recommender', type='primary'):
+            tf_idf_recs = getTDIDFRecs(st.session_state.transcript, selected_content_type)
+            if tf_idf_recs is not None and not tf_idf_recs.empty:
+                st.header('Top 3 TF-IDF Recommendations')
+                create_accordion_recs(tf_idf_recs.head(3))
+
+    st.divider()
 
     st.header("🔎 Learn More - Chat with GEMINI ")
     st.write("If you want to learn more about the content, ask GEMINI using this chat function!")

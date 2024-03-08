@@ -41,7 +41,7 @@ def getSentTransRecs(input_transcript):
 
     # Print top 3 recommendations
     #print("-------------------------------------------------------------")
-    #print("Top 3 Recommendations - Sentence Transformer -> all-MiniLM-L6-v2:")
+    #print(f"Top 3 Recommendations for {ted_or_podcast} - Model all-MiniLM-L6-v2:")
     #for i, (recommendation, similarity_score) in enumerate(top_recommendations, 1):
         #print(f"Recommendation {i}")
         #print(f"Title: {recommendation}")

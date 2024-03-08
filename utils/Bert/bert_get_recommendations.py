@@ -1,7 +1,6 @@
 import torch
 import pandas as pd      
 from sentence_transformers import SentenceTransformer, util
-import pandas as pd
 
 def getBertRecs(user_transcript):
     # Load pre-trained SBERT model
@@ -28,7 +27,7 @@ def getBertRecs(user_transcript):
 
     # Get top 3 recommendations based on cosine similarity
     top_recommendations = ted_talks_df.nlargest(3, 'cosine_similarity')
-
+    return top_recommendations
     # Print top 3 recommendations
     #print("-------------------------------------------------------------")
     #print("Top 3 Recommendations - SBERT:")
