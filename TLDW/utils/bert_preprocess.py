@@ -10,7 +10,7 @@ import torch
 from sentence_transformers import SentenceTransformer
 from . import helper_load_validate
 
-def preprocess_bert(ted_or_podcast):
+def preprocess_bert(ted_or_podcast, test):
     """
     This file preprocesses the ted talks/ podcasts and creates the embedding files for each using
     Roberta model.
@@ -28,7 +28,11 @@ def preprocess_bert(ted_or_podcast):
     None
     """
     helper_load_validate.validate_ted_or_podcast(ted_or_podcast)
-    _, transcripts = helper_load_validate.load_data(ted_or_podcast)
+    
+    if not isinstance(test, bool):
+        raise TypeError("test must be a boolean")
+    
+    _, transcripts = helper_load_validate.load_data(ted_or_podcast, test)
 
     # Load pre-trained Roberta model
     model_name = 'stsb-roberta-large'
@@ -38,7 +42,15 @@ def preprocess_bert(ted_or_podcast):
     embeddings = model.encode(transcripts, show_progress_bar=True)
 
     # Save the embeddings to a file
-    if ted_or_podcast == "ted":
-        torch.save(embeddings, 'ted_sbert_embeddings.pt')
+    if test:
+        output_path = '../TLDW/tests/test_output/'
+        if ted_or_podcast == "ted":
+            torch.save(embeddings, output_path + 'test_ted_sbert_embeddings.pt')
+        else:
+            torch.save(embeddings, output_path + 'test_podcast_sbert_embeddings.pt')
     else:
-        torch.save(embeddings, 'podcast_sbert_embeddings.pt')
+        output_path = '../TLDW/data/'
+        if ted_or_podcast == "ted":
+            torch.save(embeddings, output_path + 'ted_sbert_embeddings.pt')
+        else:
+            torch.save(embeddings, output_path + 'podcast_sbert_embeddings.pt')
