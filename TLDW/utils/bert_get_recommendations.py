@@ -35,16 +35,17 @@ def get_bert_recs(user_transcript, ted_or_podcast):
 
     if ted_or_podcast == "ted":
         # Load preprocessed TED Talks embeddings and TED Dataset
-        embeddings = torch.load('ted_sbert_embeddings.pt')
-        filepath = "./ted_talks_en.csv"
+        embeddings = torch.load('../TLDW/data/ted_sbert_embeddings2.pt')
+        filepath = "../TLDW/data/ted_talks_en.csv"
         data_df = pd.read_csv(filepath)
     else:
         # Load preprocessed Podcast Talks embeddings and Podcast Dataset
-        embeddings = torch.load('podcast_sbert_embeddings.pt')
-        filepath = "./skeptoid_transcripts.csv"
+        embeddings = torch.load('../TLDW/data/podcast_sbert_embeddings2.pt')
+        filepath = "../TLDW/data/skeptoid_transcripts.csv"
         data_df = pd.read_csv(filepath)
 
     titles = data_df["title"].tolist()  # List of titles
+    urls = data_df["url"].tolist()
 
     # Load pre-trained SBERT model
     model_name = 'stsb-roberta-large'
@@ -57,20 +58,20 @@ def get_bert_recs(user_transcript, ted_or_podcast):
     similarities = util.cos_sim(user_embedding, embeddings)
 
     # Create a DataFrame with TED Talks titles, descriptions, and cosine similarities
-    ted_talks_df = pd.DataFrame({'title': titles, 'cosine_similarity': similarities.flatten()})
+    ted_talks_df = pd.DataFrame({'title': titles, 'url':urls, 'cosine_similarity': similarities.flatten()})
 
     # Get top 3 recommendations based on cosine similarity
     top_recommendations = ted_talks_df.nlargest(3, 'cosine_similarity')
 
     # Print top 3 recommendations
-    print("-------------------------------------------------------------")
-    print(f"Top 3 Recommendations for {ted_or_podcast} - Model Roberta:")
-    i = 1
-    for _, row in top_recommendations.iterrows():
-        print(f"Recommendation {i}")
-        print(f"Title: {row['title']}")
-        print(f"Similarity Score: {row['cosine_similarity']}")
-        i += 1
-        print()
+    # print("-------------------------------------------------------------")
+    # print(f"Top 3 Recommendations for {ted_or_podcast} - Model Roberta:")
+    # i = 1
+    # for _, row in top_recommendations.iterrows():
+    #     print(f"Recommendation {i}")
+    #     print(f"Title: {row['title']}")
+    #     print(f"Similarity Score: {row['cosine_similarity']}")
+    #     i += 1
+    #     print()
 
     return top_recommendations

@@ -11,7 +11,28 @@ from dotenv import load_dotenv
 load_dotenv()
 GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
 
-
+safety_settings = [
+    {
+        "category": "HARM_CATEGORY_DANGEROUS",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_HARASSMENT",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_HATE_SPEECH",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+        "threshold": "BLOCK_NONE",
+    },
+]
 
 genai.configure(api_key=GEMINI_API_KEY)
 genai_model = genai.GenerativeModel('gemini-pro')
@@ -34,5 +55,7 @@ def get_ai_extract(prompt, text):
         raise ValueError("Prompt cannot be empty")
     if len(text) == 0:
         raise ValueError("Text cannot be empty")
-    response = genai_model.generate_content(prompt + text, stream=False)
-    return response.text, response.prompt_feedback, response.candidates
+    response = genai_model.generate_content(prompt + text, safety_settings=safety_settings)
+    for candidate in response.candidates:
+        return ' '.join([part.text for part in candidate.content.parts])
+    #return response.text, response.prompt_feedback, response.candidates

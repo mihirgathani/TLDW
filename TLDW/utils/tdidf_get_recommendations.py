@@ -32,13 +32,13 @@ def get_tdidf_recs(input_transcript, ted_or_podcast):
     # Load preprocessed dataset and embeddings
     if ted_or_podcast == "ted":
         # Load TED Talks Dataset
-        data_df = pd.read_csv("ted_tdidf_preprocessed.csv") # Update file location
-        tfidf_vectorizer = joblib.load('ted_tfidf_vectorizer.joblib')
+        data_df = pd.read_csv("../TLDW/data/ted_tdidf_preprocessed.csv") # Update file location
+        tfidf_vectorizer = joblib.load('../TLDW/data/ted_tfidf_vectorizer.joblib')
         transcripts = data_df['transcript']
     else:
         # Load Podcast Dataset
-        data_df = pd.read_csv("podcast_tdidf_preprocessed.csv") # Update file location
-        tfidf_vectorizer = joblib.load('podcast_tfidf_vectorizer.joblib')
+        data_df = pd.read_csv("../TLDW/data/podcast_tdidf_preprocessed.csv") # Update file location
+        tfidf_vectorizer = joblib.load('../TLDW/data/podcast_tfidf_vectorizer.joblib')
         transcripts = data_df['text'].dropna().tolist()
 
     # Generate TF-IDF vector for transcript from Gemini
@@ -55,12 +55,12 @@ def get_tdidf_recs(input_transcript, ted_or_podcast):
     top_recommendations = data_df.nlargest(3, 'cosine_similarity')
 
     # Print top 3 recommendations
-    print("-------------------------------------------------------------")
-    print(f"Top 3 Recommendations for {ted_or_podcast} - TDIDF:")
-    for i in range(3):
-        print("Recommendation", i + 1)
-        print("Title:", top_recommendations.iloc[i]["title"])
-        print("Similarity Score:", top_recommendations.iloc[i]["cosine_similarity"])
-        print()
+    # print("-------------------------------------------------------------")
+    # print(f"Top 3 Recommendations for {ted_or_podcast} - TDIDF:")
+    # for i in range(3):
+    #     print("Recommendation", i + 1)
+    #     print("Title:", top_recommendations.iloc[i]["title"])
+    #     print("Similarity Score:", top_recommendations.iloc[i]["cosine_similarity"])
+    #     print()
 
     return top_recommendations
