@@ -38,7 +38,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 genai_model = genai.GenerativeModel('gemini-pro')
 
 # Extract information from text based on prompt instructions
-def get_ai_extract(prompt, text, , api_client=None):
+def get_ai_extract(prompt, text, api_client=None):
     """
     Extract information from text based on prompt instructions.
 
