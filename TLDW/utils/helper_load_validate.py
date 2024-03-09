@@ -40,7 +40,7 @@ def validate_input_transcript(input_transcript):
     if not input_transcript:
         raise ValueError("input_transcript must not be empty")
 
-def load_data(ted_or_podcast):
+def load_data(ted_or_podcast, test):
     """
     Loads data for TED Talks or Podcasts.
 
@@ -62,5 +62,9 @@ def load_data(ted_or_podcast):
         data_df = pd.read_csv(filepath)
         data_df = data_df.dropna(subset=["text"])
         transcripts = data_df["text"].tolist()  # List of transcripts
+
+    if test:
+        data_df = data_df[:5]
+        transcripts = transcripts[:5]
 
     return data_df, transcripts

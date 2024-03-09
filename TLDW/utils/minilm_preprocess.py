@@ -12,7 +12,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from . import helper_load_validate
 
-def preprocess_minilm(ted_or_podcast):
+def preprocess_minilm(ted_or_podcast, test):
     """
     This file preprocesses the ted talks/ podcasts and creates the embedding files for each using
     sentence_transformer MiniLM.
@@ -30,7 +30,11 @@ def preprocess_minilm(ted_or_podcast):
     None
     """
     helper_load_validate.validate_ted_or_podcast(ted_or_podcast)
-    _, transcripts = helper_load_validate.load_data(ted_or_podcast)
+
+    if not isinstance(test, bool):
+        raise TypeError("test must be a boolean")
+
+    _, transcripts = helper_load_validate.load_data(ted_or_podcast, test)
 
     # Load Sentence Transformer model
     model_name = "sentence-transformers/all-MiniLM-L6-v2"
@@ -47,10 +51,20 @@ def preprocess_minilm(ted_or_podcast):
             transcript_embedding = np.mean(chunk_embeddings, axis=0)
             embeddings.append(transcript_embedding)
 
-    # Save embeddings to a file
-    if ted_or_podcast == "ted":
-        with open('ted_sentTrans_embeddings.pkl', 'wb') as file:
-            pickle.dump(embeddings, file)
+    if test:
+        output_path = '../TLDW/tests/test_output/'
+        if ted_or_podcast == "ted":
+            with open(output_path + 'test_ted_sentTrans_embeddings.pkl', 'wb') as file:
+                pickle.dump(embeddings, file)
+        else:
+            with open(output_path + 'test_podcast_sentTrans_embeddings.pkl', 'wb') as file:
+                pickle.dump(embeddings, file)
     else:
-        with open('podcast_sentTrans_embeddings.pkl', 'wb') as file:
-            pickle.dump(embeddings, file)
+        # Save embeddings to a file
+        output_path = '../TLDW/data/'
+        if ted_or_podcast == "ted":
+            with open(output_path + 'ted_sentTrans_embeddings.pkl', 'wb') as file:
+                pickle.dump(embeddings, file)
+        else:
+            with open(output_path + 'podcast_sentTrans_embeddings.pkl', 'wb') as file:
+                pickle.dump(embeddings, file)
