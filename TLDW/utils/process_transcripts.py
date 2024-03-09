@@ -30,9 +30,9 @@ def get_video_id(youtube_url):
     # Edge conditions for unit testing:
     if len(video_id) == 0:
         raise ValueError("Video id for input video cannot be blank")
-    if len(video_id) != 11:
-        raise ValueError("Video ID needs to have 11 characters")
-    if not video_id.isalnum():
+    #if len(video_id) != 11:
+     #   raise ValueError("Video ID needs to have 11 characters")
+    if not video_id[:11].isalnum():
         raise ValueError("Video ID is not correct")
     if DEBUG_MODE:
         print("Video ID: " + video_id)
