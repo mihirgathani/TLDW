@@ -107,7 +107,7 @@ def get_transcript(youtube_url):
     Raises:
         ValueError: If the URL is not in the correct format or transcript retrieval fails.
     """
-    if not youtube_url.startswith("https://"):
+    if not youtube_url.startswith("https://www.youtube.com"):
         raise ValueError("Video URL should start with 'https://www.youtube.com'")
     video_id = get_video_id(youtube_url)
     transcript = get_video_transcript(video_id)
