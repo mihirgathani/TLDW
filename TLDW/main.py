@@ -32,17 +32,10 @@ def main():
     #get_minilm_recs(transcript, "podcast")
 
     # # tdidf
-<<<<<<< Updated upstream
-    # preprocess_tdidf("ted")
-    get_tdidf_recs(transcript, "ted")
-    # preprocess_tdidf("podcast")
-    get_tdidf_recs(transcript, "podcast")
-=======
     # preprocess_tdidf("ted", False)
     #get_tdidf_recs(transcript, "ted")
     # preprocess_tdidf("podcast", False)
     #get_tdidf_recs(transcript, "podcast")
->>>>>>> Stashed changes
 
 
 if __name__ == '__main__':

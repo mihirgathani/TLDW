@@ -55,19 +55,7 @@ def get_ai_extract(prompt, text, , api_client=None):
         raise ValueError("Prompt cannot be empty")
     if len(text) == 0:
         raise ValueError("Text cannot be empty")
-<<<<<<< Updated upstream
-    
-    if api_client is None:
-        response = genai_model.generate_content(prompt + text, safety_settings=safety_settings)
-    else:
-        response = api_client(prompt + text, safety_settings=safety_settings)
-        
-    for candidate in response.candidates:
-        return ' '.join([part.text for part in candidate.content.parts])
-    #return response.text, response.prompt_feedback, response.candidates
-=======
     response = genai_model.generate_content(prompt + text, safety_settings=safety_settings)
     # for candidate in response.candidates:
     #     return ' '.join([part.text for part in candidate.content.parts])
     return response.text#, response.prompt_feedback, response.candidates
->>>>>>> Stashed changes
