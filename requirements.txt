@@ -5,3 +5,8 @@ google-generativeai
 googleapis-common-protos
 streamlit
 youtube-transcript-api
+langchain_google_genai
+langchain
+python-dotenv
+torch
+sentence-transformers
