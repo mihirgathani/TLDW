@@ -8,10 +8,9 @@ and saves the embeddings to a file.
 """
 
 import pickle
-import pandas as pd
 import numpy as np
 from sentence_transformers import SentenceTransformer
-from . import validation
+from . import helper_load_validate
 
 def preprocess_minilm(ted_or_podcast):
     """
@@ -30,18 +29,8 @@ def preprocess_minilm(ted_or_podcast):
     Returns:
     None
     """
-    validation.validate_ted_or_podcast(ted_or_podcast)
-
-    if ted_or_podcast == "ted":
-        # Load TED Talks Dataset
-        filepath = "./ted_talks_en.csv"
-        ted_df = pd.read_csv(filepath)
-        transcripts = ted_df["transcript"].tolist()  # List of transcripts
-    else:
-        # Load Podcast Dataset
-        filepath = "./skeptoid_transcripts.csv"
-        podcast_df = pd.read_csv(filepath)
-        transcripts = podcast_df["text"].tolist()  # List of transcripts
+    helper_load_validate.validate_ted_or_podcast(ted_or_podcast)
+    _, transcripts = helper_load_validate.load_data(ted_or_podcast)
 
     # Load Sentence Transformer model
     model_name = "sentence-transformers/all-MiniLM-L6-v2"

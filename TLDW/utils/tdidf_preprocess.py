@@ -6,10 +6,9 @@ It loads either TED Talks or Podcast transcripts, encodes them using tdidf vecto
 embeddings to a file.
 """
 
-import pandas as pd
 import joblib
 from sklearn.feature_extraction.text import TfidfVectorizer
-from . import validation
+from . import helper_load_validate
 
 def preprocess_tdidf(ted_or_podcast):
     """
@@ -29,19 +28,8 @@ def preprocess_tdidf(ted_or_podcast):
     None
     """
 
-    validation.validate_ted_or_podcast(ted_or_podcast)
-
-    if ted_or_podcast == "ted":
-        # Load TED Talks Dataset
-        filepath = "./ted_talks_en.csv"
-        data_df = pd.read_csv(filepath)
-        transcripts = data_df["transcript"].tolist()  # List of transcripts
-    else:
-        # Load Podcast Dataset
-        filepath = "./skeptoid_transcripts.csv"
-        data_df = pd.read_csv(filepath)
-        data_df = data_df.dropna(subset=["text"])
-        transcripts = data_df["text"].tolist()  # List of transcripts
+    helper_load_validate.validate_ted_or_podcast(ted_or_podcast)
+    data_df, transcripts = helper_load_validate.load_data(ted_or_podcast)
 
     tfidf_vectorizer = TfidfVectorizer()
     tokenized_transcripts = tfidf_vectorizer.fit_transform(transcripts)
