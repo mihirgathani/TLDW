@@ -53,19 +53,20 @@ def get_video_transcript(video_id):
     """
     try:
         transcript_dict = YouTubeTranscriptApi.get_transcript(video_id, languages=['en-US', 'en'])
-        languages = set(segment['language'] for segment in transcript_dict)
-        if any(language not in {'en-US', 'en'} for language in languages):
-            raise ValueError("Transcript does not contain 'en-US' and 'en' as caption languages.")
+        desired_languages = {'en-US', 'en'}  # Desired languages
+        available_languages = {segment.get('language') for segment in transcript_dict}
+        if not desired_languages.intersection(available_languages):
+            raise ValueError("Transcript does not contain any of the desired languages.")
         formatted_transcript = format_transcript(transcript_dict)
         if DEBUG_MODE:
             print("Processed transcript: " + formatted_transcript)
         return formatted_transcript
     except TranscriptsDisabled:
-        print("Transcripts are disabled for this video.")
-        return None
+        raise ValueError("Transcripts are disabled for this video.")
     except NoTranscriptAvailable:
-        print("No transcript available for this video.")
-        return None
+        raise ValueError("No transcript available for this video.")
+    except Exception as e:
+        raise e
    # except Exception as error:
    #     print("Failed to get transcript")
    #     if DEBUG_MODE:
