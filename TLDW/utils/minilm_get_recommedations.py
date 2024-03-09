@@ -36,7 +36,7 @@ def get_minilm_recs(input_transcript, ted_or_podcast):
     validation.validate_input_transcript(input_transcript)
     validation.validate_ted_or_podcast(ted_or_podcast)
 
-    titles, embeddings = load_data(ted_or_podcast)
+    titles, urls, embeddings = load_data(ted_or_podcast)
 
     # Load Sentence Transformer model
     model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
@@ -50,21 +50,24 @@ def get_minilm_recs(input_transcript, ted_or_podcast):
     similarity_scores = cosine_similarity([user_input_embedding], embeddings)[0]
 
     # Rank transcripts based on similarity scores
-    ranked_transcripts = sorted(zip(titles, similarity_scores), key=lambda x: x[1], reverse=True)
+    ranked_transcripts = sorted(zip(titles, urls, similarity_scores), key=lambda x: x[1], reverse=True)
 
     # Get top 3 recommendations
-    top_recommendations = ranked_transcripts[:3]
+    #top_recommendations = ranked_transcripts[:3]
+    
+    top_recommendations_df = pd.DataFrame(ranked_transcripts, columns=['title', 'url', 'cosine_similarity'])
+
 
     # Print top 3 recommendations
-    print("-------------------------------------------------------------")
-    print(f"Top 3 Recommendations for {ted_or_podcast} - Model all-MiniLM-L6-v2:")
-    for i, (recommendation, similarity_score) in enumerate(top_recommendations, 1):
-        print(f"Recommendation {i}")
-        print(f"Title: {recommendation}")
-        print(f"Similarity Score: {similarity_score}")
-        print()
+    # print("-------------------------------------------------------------")
+    # print(f"Top 3 Recommendations for {ted_or_podcast} - Model all-MiniLM-L6-v2:")
+    # for i, (recommendation, similarity_score) in enumerate(top_recommendations, 1):
+    #     print(f"Recommendation {i}")
+    #     print(f"Title: {recommendation}")
+    #     print(f"Similarity Score: {similarity_score}")
+    #     print()
 
-    return top_recommendations
+    return top_recommendations_df.head(3)
 
 def load_data(ted_or_podcast):
     """
@@ -82,15 +85,16 @@ def load_data(ted_or_podcast):
     """
     if ted_or_podcast == "ted":
         # Load TED Talks Dataset
-        data_df = pd.read_csv("./ted_talks_en.csv")
-        with open('ted_sentTrans_embeddings.pkl', 'rb') as file:
+        data_df = pd.read_csv("../TLDW/data/ted_talks_en.csv")
+        with open('../TLDW/data/ted_sentTrans_embeddings.pkl', 'rb') as file:
             embeddings = pickle.load(file)
     else:
         # Load Podcast Dataset
-        data_df = pd.read_csv("./skeptoid_transcripts.csv")
-        with open('podcast_sentTrans_embeddings.pkl', 'rb') as file:
+        data_df = pd.read_csv("../TLDW/data/skeptoid_transcripts.csv")
+        with open('../TLDW/data/podcast_sentTrans_embeddings.pkl', 'rb') as file:
             embeddings = pickle.load(file)
 
     titles = data_df["title"].tolist()
+    urls = data_df["url"].tolist()
 
-    return titles, embeddings
+    return titles, urls, embeddings

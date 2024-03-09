@@ -54,12 +54,12 @@ def get_transcript_summary_keywords(link):
             st.session_state.transcript = get_transcript(link)
     if 'summary' not in st.session_state:
         with st.spinner('Summarizing using Gemini...'):
-            st.session_state.summary, _, _ = get_ai_extract(
+            st.session_state.summary = get_ai_extract(
                 "Summarize the following transcript in 150 words: ", st.session_state.transcript)
             st.success('Summary is ready!')
     if 'keywords' not in st.session_state:
         with st.spinner('Getting keywords using Gemini...'):
-            st.session_state.keywords, _, _ = get_ai_extract(
+            st.session_state.keywords = get_ai_extract(
                 "Generate the top 10 most important keywords: ", st.session_state.transcript)
             st.success('Keywords are ready!')
 
