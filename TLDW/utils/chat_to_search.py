@@ -5,7 +5,7 @@ import os
 import streamlit as st
 
 # Gemini API
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_google_genai import ChatGoogleGenerativeAI, HarmBlockThreshold, HarmCategory
 from langchain.agents import initialize_agent, AgentType
 from langchain_community.tools.ddg_search.tool import DuckDuckGoSearchRun
 from langchain_community.callbacks import StreamlitCallbackHandler
@@ -30,7 +30,12 @@ def get_search_result(context, user_prompt):
         st.info("Please add your GEMINI API key to continue.")
         st.stop()
 
-    llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=API_KEY)
+    llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=API_KEY, safety_settings={
+        HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
+    },)
 
     with st.spinner('Asking to GEMINI...'):
         context_prompt = "Answer the question based on the context below. Context:" + context
