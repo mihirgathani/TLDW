@@ -10,3 +10,4 @@ langchain
 python-dotenv
 torch
 sentence-transformers
+pylint-fail-under
