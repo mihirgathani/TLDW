@@ -118,7 +118,7 @@ class TestStreamlitApp(unittest.TestCase):
         self.app_test.text_input[0].input("https://www.youtube.com/watch?v=dQw4w9WgXcQ").run()
         self.app_test.radio[0].set_value("TED Talks").run()
         self.app_test.button[0].click().run()
-        self.assertEqual(self.app_test.header[0].value, "Top 3 SBERT Recommendations")
+        self.assertEqual(self.app_test.header[2].value, "Top 3 SBERT Recommendations")
         self.assertIsNotNone(self.app_test.get("expandable"))
 
     @patch('utils.process_transcripts.get_transcript')
@@ -143,7 +143,7 @@ class TestStreamlitApp(unittest.TestCase):
         self.app_test.text_input[0].input("https://www.youtube.com/watch?v=dQw4w9WgXcQ").run()
         self.app_test.radio[0].set_value("TED Talks").run()
         self.app_test.button[1].click().run()
-        self.assertEqual(self.app_test.header[0].value, "Top 3 MiniLM Recommendations")
+        self.assertEqual(self.app_test.header[2].value, "Top 3 MiniLM Recommendations")
         self.assertIsNotNone(self.app_test.get("expandable"))
 
     @patch('utils.process_transcripts.get_transcript')
@@ -168,7 +168,7 @@ class TestStreamlitApp(unittest.TestCase):
         self.app_test.text_input[0].input("https://www.youtube.com/watch?v=dQw4w9WgXcQ").run()
         self.app_test.radio[0].set_value("TED Talks").run()
         self.app_test.button[2].click().run()
-        self.assertEqual(self.app_test.header[0].value, "Top 3 TF-IDF Recommendations")
+        self.assertEqual(self.app_test.header[2].value, "Top 3 TF-IDF Recommendations")
         self.assertIsNotNone(self.app_test.get("expandable"))
 
     # # def test_chatbot(self):
