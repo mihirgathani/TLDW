@@ -53,7 +53,7 @@ def get_transcript_summary_keywords(link):
         if 'transcript' not in st.session_state:
             with st.spinner('Getting transcript...'):
                 st.session_state.transcript = get_transcript(link)
-                
+
         if 'summary' not in st.session_state:
             st.session_state.summary = None  # Initialize keywords with None
             with st.spinner('Summarizing using Gemini...'):
@@ -146,7 +146,7 @@ if title:
                 bert_recs = get_bert_recs(st.session_state.transcript, selected_content_type)
                 if bert_recs is not None or not bert_recs.empty:
                     st.header('Top 3 SBERT Recommendations')
-                    create_accordion_recs(bert_recs.head(3))
+                    create_accordion_recs(bert_recs)
 
             # MiniLM Recommender button
             if col2.button('MiniLM Recommender', type='primary'):
