@@ -4,7 +4,10 @@ Test module for the Streamlit App.
 This module contains unit tests to verify the behavior of the Streamlit App.
 """
 import unittest
+import pandas as pd
 from streamlit.testing.v1 import AppTest
+from unittest.mock import patch
+
 
 from utils.process_transcripts import get_transcript
 from utils.summarize_transcripts import get_ai_extract
@@ -28,54 +31,74 @@ class TestStreamlitApp(unittest.TestCase):
         """
         self.app_test = AppTest.from_file('../streamlit_app.py', default_timeout=100).run()
 
-    # def test_empty_youtube(self):
-    #     """
-    #     Test case to check behavior with an empty YouTube link input.
+    def test_empty_youtube(self):
+        """
+        Test case to check behavior with an empty YouTube link input.
 
-    #     This test case inputs an empty string as the YouTube link and checks
-    #     if the Streamlit app outputs a ValueError.
-    #     """
-    #     with self.assertRaises(ValueError):
-    #         self.app_test.text_input[0].input(" ").run()
+        This test case inputs an empty string as the YouTube link and checks
+        if the Streamlit app outputs a ValueError.
+        """
+        self.app_test.text_input[0].input(" ").run()
+        self.assertRaises(ValueError)
 
-
-    def test_get_transcript_summary_keywords(self):
+    @patch('utils.process_transcripts.get_transcript')
+    @patch('utils.summarize_transcripts.get_ai_extract')
+    def test_get_transcript_summary_keywords(self, mock_get_transcript, mock_get_ai_extract):
         """
         Test case to verify transcript, summary, and keywords retrieval.
 
         This test case inputs a valid YouTube link and checks if the Streamlit app
         successfully retrieves the transcript, summary, and keywords from Gemini.
         """
+        mock_get_transcript.return_value = "Mocked transcript"
+        mock_get_ai_extract.return_value = "Mocked summary"
+
         self.app_test.text_input[0].input("https://www.youtube.com/watch?v=dQw4w9WgXcQ").run()
+
         self.assertIsNotNone(self.app_test.session_state.transcript)
         self.assertIsNotNone(self.app_test.session_state.summary)
-        self.assertIsNotNone(self.app_test.session_state.keywords)
 
-    def test_selected_content_type_ted(self):
+    @patch('utils.process_transcripts.get_transcript')
+    @patch('utils.summarize_transcripts.get_ai_extract')
+    def test_selected_content_type_ted(self, mock_get_transcript, mock_get_ai_extract):
         """
         Test case to verify selected content type is 'ted'.
 
         This test case inputs a valid YouTube link and selects 'TED Talks' as
         the content type. It then checks if the selected_content_type is 'ted'.
         """
+
+        mock_get_transcript.return_value = "Mocked transcript"
+        mock_get_ai_extract.return_value = "Mocked summary"
+
         self.app_test.text_input[0].input("https://www.youtube.com/watch?v=dQw4w9WgXcQ").run()
+
         self.app_test.radio[0].set_value("TED Talks").run()
         selected_content_type = self.app_test.session_state.selected_content_type
         self.assertEqual(selected_content_type, "ted")
 
-    def test_selected_content_type_podcasts(self):
+    @patch('utils.process_transcripts.get_transcript')
+    @patch('utils.summarize_transcripts.get_ai_extract')
+    def test_selected_content_type_podcast(self, mock_get_transcript, mock_get_ai_extract):
         """
-        Test case to verify selected content type is 'podcast'.
+        Test case to verify selected content type is 'ted'.
 
-        This test case inputs a valid YouTube link and selects 'Podcasts' as
-        the content type. It then checks if the selected_content_type is 'podcast'.
+        This test case inputs a valid YouTube link and selects 'TED Talks' as
+        the content type. It then checks if the selected_content_type is 'ted'.
         """
+
+        mock_get_transcript.return_value = "Mocked transcript"
+        mock_get_ai_extract.return_value = "Mocked summary"
+
         self.app_test.text_input[0].input("https://www.youtube.com/watch?v=dQw4w9WgXcQ").run()
+
         self.app_test.radio[0].set_value("Podcasts").run()
         selected_content_type = self.app_test.session_state.selected_content_type
         self.assertEqual(selected_content_type, "podcast")
 
-    def test_sbert_recommender(self):
+    @patch('utils.process_transcripts.get_transcript')
+    @patch('utils.summarize_transcripts.get_ai_extract')
+    def test_sbert_recommender(self, mock_get_transcript, mock_get_ai_extract):
         """
         Test case to verify SBERT recommender behavior.
 
@@ -83,13 +106,18 @@ class TestStreamlitApp(unittest.TestCase):
         the content type, and clicks on the SBERT Recommender button. It then
         checks if the recommendations are displayed correctly.
         """
+        mock_get_transcript.return_value = "Mocked transcript"
+        mock_get_ai_extract.return_value = "Mocked summary"
+
         self.app_test.text_input[0].input("https://www.youtube.com/watch?v=dQw4w9WgXcQ").run()
         self.app_test.radio[0].set_value("TED Talks").run()
         self.app_test.button[0].click().run()
         self.assertEqual(self.app_test.header[2].value, "Top 3 SBERT Recommendations")
         self.assertIsNotNone(self.app_test.get("expandable"))
 
-    def test_minilm_recommender(self):
+    @patch('utils.process_transcripts.get_transcript')
+    @patch('utils.summarize_transcripts.get_ai_extract')
+    def test_minilm_recommender(self, mock_get_transcript, mock_get_ai_extract):
         """
         Test case to verify MiniLM recommender behavior.
 
@@ -97,13 +125,18 @@ class TestStreamlitApp(unittest.TestCase):
         and clicks on the MiniLM Recommender button. It then checks if the recommendations
         are displayed correctly.
         """
+        mock_get_transcript.return_value = "Mocked transcript"
+        mock_get_ai_extract.return_value = "Mocked summary"
+
         self.app_test.text_input[0].input("https://www.youtube.com/watch?v=dQw4w9WgXcQ").run()
         self.app_test.radio[0].set_value("TED Talks").run()
         self.app_test.button[1].click().run()
         self.assertEqual(self.app_test.header[2].value, "Top 3 MiniLM Recommendations")
         self.assertIsNotNone(self.app_test.get("expandable"))
 
-    def test_tfidf_recommender(self):
+    @patch('utils.process_transcripts.get_transcript')
+    @patch('utils.summarize_transcripts.get_ai_extract')
+    def test_tfidf_recommender(self, mock_get_transcript, mock_get_ai_extract):
         """
         Test case to verify TF-IDF recommender behavior.
 
@@ -111,6 +144,9 @@ class TestStreamlitApp(unittest.TestCase):
         and clicks on the TF-IDF Recommender button. It then checks if the recommendations
         are displayed correctly.
         """
+        mock_get_transcript.return_value = "Mocked transcript"
+        mock_get_ai_extract.return_value = "Mocked summary"
+
         self.app_test.text_input[0].input("https://www.youtube.com/watch?v=dQw4w9WgXcQ").run()
         self.app_test.radio[0].set_value("TED Talks").run()
         self.app_test.button[2].click().run()

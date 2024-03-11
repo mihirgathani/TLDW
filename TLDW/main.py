@@ -10,14 +10,14 @@ from utils.tdidf_get_recommendations import get_tdidf_recs
 def main():
     video_url = input("Please enter the YouTube video URL: ")
     transcript = get_transcript(video_url)
-    #print(transcript)
-    #summary = get_ai_extract("Summarize this transcript within 250 words, output a paragraph: ", transcript)
-    # keywords = get_ai_extract("Generate the top 10 most important keywords: ", transcript)
-    #print("This is the summary of the transcript:")
-    #print(summary)
-    # print("----------------------------------------------------------------")
-    # print("These are the top 10 keywords:")
-    # print(keywords)
+    print(transcript)
+    summary = get_ai_extract("Summarize this transcript within 250 words, output a paragraph: ", transcript)
+    keywords = get_ai_extract("Generate the top 10 most important keywords: ", transcript)
+    print("This is the summary of the transcript:")
+    print(summary)
+    print("----------------------------------------------------------------")
+    print("These are the top 10 keywords:")
+    print(keywords)
 
     # Roberta
     # preprocess_bert("ted", False)
