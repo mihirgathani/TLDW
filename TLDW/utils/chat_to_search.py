@@ -12,8 +12,6 @@ from langchain_community.callbacks import StreamlitCallbackHandler
 
 # .env
 from dotenv import load_dotenv
-
-
 # load .env
 load_dotenv()
 

@@ -60,19 +60,19 @@ def get_transcript_summary_keywords(link):
                 st.session_state.summary = get_ai_extract(
                     "Summarize the following transcript in 150 words: ", 
                     st.session_state.transcript)
-                st.success('Summary is ready!')
-                st.header("Summary")
-                st.write(st.session_state.summary)
-                st.divider()
+                #st.success('Summary is ready!')
+                #st.header("Summary")
+                #st.write(st.session_state.summary)
+                #st.divider()
 
         if 'keywords' not in st.session_state:
             st.session_state.keywords = None  # Initialize keywords with None
             with st.spinner('Getting keywords using Gemini...'):
                 st.session_state.keywords = get_ai_extract(
                     "Generate the top 10 most important keywords: ", st.session_state.transcript)
-                st.success('Keywords are ready!')
-                st.header("Keywords")
-                st.write(st.session_state.keywords)
+                # st.success('Keywords are ready!')
+                # st.header("Keywords")
+                # st.write(st.session_state.keywords)
                 st.divider()
 
     except ValueError as val_err:
@@ -118,17 +118,17 @@ if title:
     # Get transcript, summary, and keywords if not already obtained
     get_transcript_summary_keywords(title)
 
-    # # Display summary if available
-    # if 'summary' in st.session_state:
-    #     st.header("Summary")
-    #     st.write(st.session_state.summary)
-    #     st.divider()
+    # Display summary if available
+    if 'summary' in st.session_state:
+        st.header("Summary")
+        st.write(st.session_state.summary)
+        st.divider()
 
-    # # Display keywords if available
-    # if 'keywords' in st.session_state:
-    #     st.header("Keywords")
-    #     st.write(st.session_state.keywords)
-    #     st.divider()
+    # Display keywords if available
+    if 'keywords' in st.session_state:
+        st.header("Keywords")
+        st.write(st.session_state.keywords)
+        st.divider()
 
     if 'transcript' in st.session_state:
         content_mapping = {"TED Talks": "ted", "Podcasts": "podcast"}
