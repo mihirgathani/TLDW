@@ -16,9 +16,9 @@
 ![Keywords shown by the website](https://github.com/JoobeeJung/TLDW/blob/main/examples/images/keywords.png)
 
 - After completing the aforementioned process, the website provides the user with an option to choose between Ted Talks or Podcasts, similar to the video provided by the user at the beginning. To recommend similar content, we've incorporated three recommendation methods and provide the user three recommended vidoes, based on the top three similarity scores:
- - [SBERT recommender](https://www.sbert.net/)
- - [MiniLM recommender](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
- - [TF-IDF recommender](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
+  - [SBERT recommender](https://www.sbert.net/)
+  - [MiniLM recommender](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
+  - [TF-IDF recommender](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
 
 Below is a screenshot demonstrating the use of SBERT to obtain the top three recommendations for Ted Talks. Users can select a video and access the URL for the recommended video, along with viewing the generated similarity score.
 
