@@ -11,3 +11,4 @@ python-dotenv
 torch
 sentence-transformers
 pylint-fail-under
+duckduckgo-search
