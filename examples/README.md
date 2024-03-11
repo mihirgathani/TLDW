@@ -7,7 +7,7 @@ git clone https://github.com/JoobeeJung/TLDW.git
 ```
 
 ### **2. Install required packages and libraries**
-Refer libraries.md for more information on required library/package installments
+Refer (requirements.txt)[https://github.com/JoobeeJung/TLDW/blob/main/requirements.txt] for more information on required library/package installments
 
 ### **3. Get the Gemini API key**
 Before running the application it is important to generate a Gemini [API Key](https://aistudio.google.com/app/apikey). The API key needs to be placed under TLDW/ in a .env file, assigned to the variable **GEMINI_API_KEY**.
