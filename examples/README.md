@@ -9,13 +9,14 @@ git clone https://github.com/JoobeeJung/TLDW.git
 ### **2. Install required packages and libraries**
 Refer libraries.md for more information on required library/package installments
 
-### **3. Get the Gemini API key 
+### **3. Get the Gemini API key**
 Before running the application it is important to generate a Gemini [API Key](https://aistudio.google.com/app/apikey). The API key needs to be placed under .gitignore and put under the variable name 'GEMINI_API_KEY'. 
 
-### **4. Running the application
+### **4. Running the application**
 Use the following command on your terminal to open up our website on your browser. Make sure you are in the TLDW/TLDW directory
-'''
+```
 streamlit run streamlit run streamlit_app.py 
+```
 
 ## Deployment
 
