@@ -20,9 +20,7 @@ streamlit run streamlit run streamlit_app.py
 
 ## Deployment
 
-The program was deployed using Streamlit Sharing via https://share.streamlit.io/. Learn more about deploying and sharing a public Streamlit web app.
-
-Public Website: nothing.streamlit.app
+The program was deployed using [Streamlit Sharing](https://share.streamlit.io/). For more informtion, one can visit the [Public Website](nothing.streamlit.app).
 
 ## Web Application
 
