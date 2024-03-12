@@ -1,3 +1,5 @@
+<img width="880" alt="Screenshot 2024-03-12 at 11 27 06 AM" src="https://github.com/JoobeeJung/TLDW/assets/77033306/53aee74d-8966-4844-9433-3035dbe68e5f">
+
 # TL;DW: UW MSDS DATA515 Summarization Tool with LLMs
 ![Build/Test Workflow](https://github.com/JoobeeJung/TLDW/actions/workflows/build_test.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/JoobeeJung/TLDW/badge.svg?branch=main)](https://coveralls.io/github/JoobeeJung/TLDW?branch=main)
