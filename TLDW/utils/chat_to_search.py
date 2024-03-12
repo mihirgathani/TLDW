@@ -22,45 +22,21 @@ def get_search_result(context, user_prompt):
     """
     This function returns the ressult of user query using Gemini.
     """
-    if st.session_state:
-        st.session_state.messages.append({"role": "user", "content": user_prompt})
-        st.chat_message("user").write(user_prompt)
+    st.session_state.messages.append({"role": "user", "content": user_prompt})
+    st.chat_message("user").write(user_prompt)
 
-        if not API_KEY:
-            st.info("Please add your GEMINI API key to continue.")
-            st.stop()
+    if not API_KEY:
+        st.info("Please add your GEMINI API key to continue.")
+        st.stop()
 
-        llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=API_KEY, safety_settings={
-            HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
-            HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
-            HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
-            HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
-        },)
+    llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=API_KEY, safety_settings={
+        HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
+    },)
 
-        with st.spinner('Asking to GEMINI...'):
-            context_prompt = "Answer the question based on the context below. Context:" + context
-            prompt =  context_prompt + "Question:" + user_prompt
-
-            llm.invoke(prompt)
-            search = DuckDuckGoSearchRun(name="Search")
-            search_agent = initialize_agent(
-                [search], llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True
-            )
-
-            with st.chat_message("assistant"):
-                st_cb = StreamlitCallbackHandler(st.container(), expand_new_thoughts=False)
-                response = search_agent.run(st.session_state.messages, callbacks=[st_cb])
-                st.session_state.messages.append({"role": "assistant", "content": response})
-                return response
-    else: 
-
-        llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=API_KEY, safety_settings={
-            HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
-            HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
-            HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
-            HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
-        },)
-
+    with st.spinner('Asking to GEMINI...'):
         context_prompt = "Answer the question based on the context below. Context:" + context
         prompt =  context_prompt + "Question:" + user_prompt
 
@@ -69,6 +45,9 @@ def get_search_result(context, user_prompt):
         search_agent = initialize_agent(
             [search], llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True
         )
-        response = search_agent.run(prompt)
-        print(response, "response")
-        return response
+
+        with st.chat_message("assistant"):
+            st_cb = StreamlitCallbackHandler(st.container(), expand_new_thoughts=False)
+            response = search_agent.run(st.session_state.messages, callbacks=[st_cb])
+            st.session_state.messages.append({"role": "assistant", "content": response})
+            return response
