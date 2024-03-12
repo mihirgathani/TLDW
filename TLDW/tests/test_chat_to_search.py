@@ -13,8 +13,6 @@ class TestGetSearchResult(unittest.TestCase):
     """
     @patch("utils.chat_to_search.ChatGoogleGenerativeAI")
     @patch("utils.chat_to_search.initialize_agent")
-    @patch("utils.chat_to_search.DuckDuckGoSearchRun")
-    @patch("utils.chat_to_search.st")
     # pylint: disable=line-too-long
     def test_get_search_result(self, mock_search_run, mock_initialize_agent, mock_chat_generative_ai):
         """
