@@ -29,7 +29,7 @@ Before running the application it is important to generate a Gemini [API Key](ht
 ### **4. Run the application**
 Use the following command on your terminal to open up our website on your browser. Make sure you are in the TLDW/TLDW directory
 ```
-streamlit run streamlit run streamlit_app.py 
+streamlit run streamlit_app.py 
 ```
 
 ## Deployment
