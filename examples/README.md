@@ -39,4 +39,4 @@ The program was deployed using [Streamlit Sharing](https://share.streamlit.io/).
 ## Web Application
 
 - Click here for a walk through [demonstration](https://github.com/JoobeeJung/TLDW/blob/main/examples/images/Recording_final.mp4) video of our website.
-- Click here for a text demonstration [demonstration](https://github.com/JoobeeJung/TLDW/blob/main/examples/website_navigation.md) of our vide0.
+- Click here for a text demonstration [demonstration](https://github.com/JoobeeJung/TLDW/blob/main/examples/website_navigation.md) of our video.
