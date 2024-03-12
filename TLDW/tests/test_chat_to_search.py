@@ -4,6 +4,7 @@
 Test suite for the chat_to_search module.
 """
 import unittest
+from unittest.mock import patch
 from unittest.mock import patch, MagicMock
 from utils.chat_to_search import get_search_result
 
@@ -14,12 +15,12 @@ class TestGetSearchResult(unittest.TestCase):
     @patch("utils.chat_to_search.ChatGoogleGenerativeAI")
     @patch("utils.chat_to_search.initialize_agent")
     @patch("utils.chat_to_search.DuckDuckGoSearchRun")
+    @patch("utils.chat_to_search.st")
     # pylint: disable=line-too-long
-    def test_get_search_result(self, mock_search_run, mock_initialize_agent, mock_chat_generative_ai):
+    def test_get_search_result(self, mock_st, mock_search_run, mock_initialize_agent, mock_chat_generative_ai):
         """
-        Test by mocking response of get_search_result
+        Smoke test with mocking LLMs response
         """
-        # Mock necessary objects
         mock_chat_generative_ai_instance = MagicMock()
         mock_chat_generative_ai_instance.invoke.return_value = "Mocked response"
         mock_chat_generative_ai.return_value = mock_chat_generative_ai_instance
@@ -31,6 +32,10 @@ class TestGetSearchResult(unittest.TestCase):
         mock_initialize_agent_instance = MagicMock()
         mock_initialize_agent_instance.run.return_value = "Mocked agent response"
         mock_initialize_agent.return_value = mock_initialize_agent_instance
+
+        # Mock Streamlit session state
+        mock_st.session_state = MagicMock()
+        mock_st.session_state.messages = []
 
         # Mock user input
         context = "Mocked context"
