@@ -27,11 +27,11 @@ Team Members:
 5. [Example](#example)
 
 ## Tasks of Interest
-* Youtube Video Summary and Keyword Generator
+- **Youtube Video Summary and Keyword Generator**
   * Implement a feature to extract key insights and main themes from the YouTube video transcript, providing users with a concise summary and relevant keywords.
-- Recommendation System for TED Talks and Podcasts
+- **Recommendation System for TED Talks and Podcasts**
   * Develop algorithms to analyze the content of TED Talks and podcasts, identifying similarities and relevance to the topic discussed in the YouTube video
-- Chatbot to learn more content
+- **Chatbot to learn more content**
   * Create a conversational AI interface that engages users in natural language interactions, allowing them to learn more about specific aspects of the content, explore related topics, and receive informative responses in real time.
 
 ## Questions of Interest
