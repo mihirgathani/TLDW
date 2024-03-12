@@ -171,20 +171,5 @@ class TestStreamlitApp(unittest.TestCase):
         self.assertEqual(self.app_test.header[2].value, "Top 3 TF-IDF Recommendations")
         self.assertIsNotNone(self.app_test.get("expandable"))
 
-    # # def test_chatbot(self):
-    # #     """
-    # #     Test case to verify chatbot functionality.
-
-    # #     This test case inputs a valid YouTube link, selects 'TED Talks' as the content type,
-    # #     and checks if the chatbot section is displayed correctly. It then inputs a question
-    # #     and verifies if the chatbot responds appropriately.
-    # #     """
-    # #     self.app_test.text_input[0].input("https://www.youtube.com/watch?v=dQw4w9WgXcQ").run()
-    # #     self.app_test.radio[0].set_value("TED Talks").run()
-    # #     self.assertEqual(self.app_test.header[2].value, "🔎 Learn More - Chat with GEMINI")
-    # #     self.app_test.chat_input[0].set_value("What is rick-rolling?").run()
-    # #     self.assertEqual(self.app_test.chat_message[1].markdown[0].value, "What is rick-rolling?")
-    # #     self.assertIsNotNone(self.app_test.chat_message[0].markdown[0].value)
-
 if __name__ == "__main__":
     unittest.main()
