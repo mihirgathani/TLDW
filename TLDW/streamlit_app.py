@@ -38,10 +38,11 @@ def create_accordion_recs(recommendations):
             st.markdown("- **Similarity Score:** " + str(round(row['sim_scores'], 2)))
         i += 1
 
-# Function to get transcript, summary, and keywords if not already obtained
-def get_transcript_summary_keywords(link):
+
+# Function to get transcript if not already obtained
+def get_transcript_link(link):
     """
-    Retrieves transcript, summary, and keywords for the provided YouTube video link.
+    Retrieves transcript for the provided YouTube video link.
 
     Args:
         link (str): The YouTube video link.
@@ -54,32 +55,53 @@ def get_transcript_summary_keywords(link):
             with st.spinner('Getting transcript...'):
                 st.session_state.transcript = get_transcript(link)
 
+    except ValueError as val_err:
+        st.error(str(val_err))
+    except TypeError as type_err:
+        st.error(str(type_err))
+
+
+# Function to get summary if not already obtained
+def get_summary():
+    """
+    Retrieves summary from generated scripts.
+
+    Returns:
+        None
+    """
+    try:
         if 'summary' not in st.session_state:
             st.session_state.summary = None  # Initialize keywords with None
             with st.spinner('Summarizing using Gemini...'):
                 st.session_state.summary = get_ai_extract(
                     "Summarize the following transcript in 150 words: ", 
                     st.session_state.transcript)
-                #st.success('Summary is ready!')
-                #st.header("Summary")
-                #st.write(st.session_state.summary)
-                #st.divider()
-
-        if 'keywords' not in st.session_state:
-            st.session_state.keywords = None  # Initialize keywords with None
-            with st.spinner('Getting keywords using Gemini...'):
-                st.session_state.keywords = get_ai_extract(
-                    "Generate the top 10 most important keywords: ", st.session_state.transcript)
-                # st.success('Keywords are ready!')
-                # st.header("Keywords")
-                # st.write(st.session_state.keywords)
-                st.divider()
 
     except ValueError as val_err:
         st.error(str(val_err))
     except TypeError as type_err:
         st.error(str(type_err))
 
+# Function to get keyword if not already obtained
+def get_keyword():
+    """
+    Retrieves keyword from generated transcript.
+
+    Returns:
+        None
+    """
+    try:
+        if 'keywords' not in st.session_state:
+            st.session_state.keywords = None  # Initialize keywords with None
+            with st.spinner('Getting keywords using Gemini...'):
+                st.session_state.keywords = get_ai_extract(
+                    "Generate the top 10 most important keywords: ", st.session_state.transcript)
+                st.divider()
+
+    except ValueError as val_err:
+        st.error(str(val_err))
+    except TypeError as type_err:
+        st.error(str(type_err))
 
 # Starting information
 st.info(
@@ -116,13 +138,16 @@ title = st.text_input('Youtube URL', on_change = rerun)
 # Check if user input is provided
 if title:
     # Get transcript, summary, and keywords if not already obtained
-    get_transcript_summary_keywords(title)
+    get_transcript_link(title)
+    get_summary()
 
     # Display summary if available
     if 'summary' in st.session_state:
         st.header("Summary")
         st.write(st.session_state.summary)
         st.divider()
+
+    get_keyword()
 
     # Display keywords if available
     if 'keywords' in st.session_state:
