@@ -1,3 +1,11 @@
+# Examples
+This folder contains the files for various demonstrations including:
+- Running the website locally
+- Website Deployment
+- Website Application  
+
+
+
 ## Running the website locally
 
 ### **1. Clone the Git Repo**
