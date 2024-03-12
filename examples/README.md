@@ -6,7 +6,7 @@ This folder contains the files for various demonstrations including:
     - [Get and input the Gemini API key](https://github.com/JoobeeJung/TLDW/edit/main/examples/README.md#L24)
     - [Run the application](https://github.com/JoobeeJung/TLDW/edit/main/examples/README.md#L29)
 - [Website Deployment](https://github.com/JoobeeJung/TLDW/edit/main/examples/README.md#L35)
-- [Website Application] (https://github.com/JoobeeJung/TLDW/edit/main/examples/README.md#L39) 
+- [Website Application](https://github.com/JoobeeJung/TLDW/edit/main/examples/README.md#L39) 
 
 
 
