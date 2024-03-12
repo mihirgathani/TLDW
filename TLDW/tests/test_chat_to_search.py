@@ -20,7 +20,7 @@ class TestGetSearchResult(unittest.TestCase):
 
         # Configure the mock to return a desired response
         mock_response = "Mocked Gemini response for prompt"
-        mock_llm.return_value.invoke.return_value = mock_response
+        mock_llm.return_value = mock_response
 
         response = get_search_result(context, user_prompt)
         self.assertNotEqual(response, "", "Result should not be empty.")
