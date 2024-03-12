@@ -12,19 +12,36 @@ class TestGetSearchResult(unittest.TestCase):
     """
     Test case for the get_search_result function.
     """
-    @patch('langchain_google_genai.ChatGoogleGenerativeAI')  # Mock the entire class
-    def test_get_search_result_with_session_state(self, mock_llm):
-        """Tests the get_search_result function with session state."""
-        context = "This is some context for the query."
-        user_prompt = "What is the answer to the question?"
+    @patch('utils.chat_to_search.ChatGoogleGenerativeAI')
+    def test_get_search_result_mocked_response(self, mock_chat_google_generative_ai):
+        """
+        Test get_search_result function with mocked response.
+        """
+        # Set up the mock object
+        mock_instance = mock_chat_google_generative_ai.return_value
+        mock_instance.invoke.return_value = "Mocked response from Gemini"
 
-        # Configure the mock to return a desired response
-        mock_response = "Mocked Gemini response for prompt"
-        mock_llm.return_value = mock_response
+        # Call the function with sample context and user prompt
+        context = "Sample context"
+        user_prompt = "Sample user prompt"
+        result = get_search_result(context, user_prompt)
 
-        response = get_search_result(context, user_prompt)
-        self.assertNotEqual(response, "", "Result should not be empty.")
-        # self.assertNotIn("Invoking Gemini...", response)  # Ensure no actual call
+        # Assert that the result matches the mocked response
+        self.assertEqual(result, "Mocked response from Gemini")
+
+    # @patch('utils.chat_to_search.ChatGoogleGenerativeAI')  # Mock the entire class
+    # def test_get_search_result_with_session_state(self, mock_llm):
+    #     """Tests the get_search_result function with session state."""
+    #     context = "This is some context for the query."
+    #     user_prompt = "What is the answer to the question?"
+
+    #     # Configure the mock to return a desired response
+    #     mock_response = "Mocked Gemini response for prompt"
+    #     mock_llm.return_value = mock_response
+
+    #     response = get_search_result(context, user_prompt)
+    #     self.assertNotEqual(response, "", "Result should not be empty.")
+    #     # self.assertNotIn("Invoking Gemini...", response)  # Ensure no actual call
 
     # @patch('utils.chat_to_search.get_search_result.ChatGoogleGenerativeAI')
     # # @patch('langchain_google_genai.ChatGoogleGenerativeAI')
