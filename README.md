@@ -1,11 +1,11 @@
 <img width="880" alt="Screenshot 2024-03-12 at 11 27 06 AM" src="https://github.com/JoobeeJung/TLDW/assets/77033306/53aee74d-8966-4844-9433-3035dbe68e5f">
 
-# UW MSDS DATA515 Summarization and Recommendation Tool with LLMs
+# UW MSDS DATA515: <br/> Summarization and Recommendation Tool with LLMs
 ![Build/Test Workflow](https://github.com/JoobeeJung/TLDW/actions/workflows/build_test.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/JoobeeJung/TLDW/badge.svg?branch=main)](https://coveralls.io/github/JoobeeJung/TLDW?branch=main)
 
 ## Introduction
-As students, we faced many challenges in navigating YouTube's content landscape for learning purposes. With so many videos available on a wide range of topics, it was often overwhelming to find the most relevant and high-quality content. We found ourselves spending a significant amount of time sifting through videos, trying to identify those that would provide us with the insights and knowledge we were seeking.
+As students, we faced many challenges navigating YouTube's content landscape for learning purposes. With so many videos available on a wide range of topics, it was often overwhelming to find the most relevant and high-quality content. We found ourselves spending a significant amount of time sifting through videos, trying to identify those that would provide us with the insights and knowledge we were seeking.
 
 This experience led us to recognize the need for a solution to streamline the learning process and make it more efficient. That's where TL;DW comes in. TL;DW, which stands for 'Too Long; Don't Watch,' is an innovative tool designed to address these challenges by summarizing YouTube videos and recommending supplementary TED Talks and podcasts.
 
