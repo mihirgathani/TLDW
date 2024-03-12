@@ -7,11 +7,9 @@
 ## Introduction
 As students, we faced many challenges in navigating YouTube's content landscape for learning purposes. With so many videos available on a wide range of topics, it was often overwhelming to find the most relevant and high-quality content. We found ourselves spending a significant amount of time sifting through videos, trying to identify those that would provide us with the insights and knowledge we were seeking.
 
-This experience led us to recognize the need for a solution to streamline the learning process and make it more efficient. That's where TL;DW comes in. TL; DW, which stands for 'Too Long; Don't Watch,' is an innovative tool designed to address these challenges by summarizing YouTube videos and recommending supplementary TED Talks and podcasts.
+This experience led us to recognize the need for a solution to streamline the learning process and make it more efficient. That's where TL;DW comes in. TL;DW, which stands for 'Too Long; Don't Watch,' is an innovative tool designed to address these challenges by summarizing YouTube videos and recommending supplementary TED Talks and podcasts.
 
 With TL;DW, users no longer have to spend hours watching lengthy videos to extract key information. Instead, they can access concise summaries that capture the essence of the content in a fraction of the time. Additionally, TL;DW goes beyond simply summarizing videos by recommending supplementary content from TED Talks and podcasts, providing users with access to diverse perspectives and expertise on the topics they are interested in.
-
-Overall, TL;DW represents a significant step forward in enhancing the learning experience on YouTube. By addressing the challenges we faced as students, TL;DW empowers users to navigate the content landscape more effectively and access the knowledge they need to succeed.
 
 Team Members: 
 | **Name**       | **Github**         |
@@ -31,12 +29,12 @@ Team Members:
 ## Tasks of Interest
 ### Proposed Project Type: Recommendation + Summarization System
 
-- Youtube Video Summary and Keyword Generator
--     Implement a feature to extract key insights and main themes from the YouTube video transcript, providing users with a concise summary and relevant keywords.
+* Youtube Video Summary and Keyword Generator
+  * Implement a feature to extract key insights and main themes from the YouTube video transcript, providing users with a concise summary and relevant keywords.
 - Recommendation System for TED Talks and Podcasts
--     Develop algorithms to analyze the content of TED Talks and podcasts, identifying similarities and relevance to the topic discussed in the YouTube video
+  * Develop algorithms to analyze the content of TED Talks and podcasts, identifying similarities and relevance to the topic discussed in the YouTube video
 - Chatbot to learn more content
--     Create a conversational AI interface that engages users in natural language interactions, allowing them to learn more about specific aspects of the content, explore related topics, and receive informative responses in real-time.
+  * Create a conversational AI interface that engages users in natural language interactions, allowing them to learn more about specific aspects of the content, explore related topics, and receive informative responses in real time.
 
 ## Questions of Interest
 - What Ted Talks or Podcasts can I watch to learn more about the YouTube video I just watched?
@@ -161,38 +159,48 @@ Team Members:
 # Installation
 This repository can be cloned locally using the following command.
 
-`git clone https://github.com/JoobeeJung/TLDW.git`
+```
+git clone https://github.com/JoobeeJung/TLDW.git
+```
 
-*Note: Git is required to run the above command. For instructions on downloading Git, please see the [GitHub guide][https://github.com/git-guides/install-git].*
+*Note: Git is required to run the above command. For instructions on downloading Git, please see the [GitHub guide](https://github.com/git-guides/install-git).*
 
 ## Environment
-Our application is built on various Python packages with specific version requirements. When installing these packages individually, it can cause conflicts and require dependnceis in your workspace. To fix this issue, it is recommended to use a virtual environment in `conda` with all the necessary packages of our application. A list of necessary packages and libraries can be found in our [environment.yml][https://github.com/JoobeeJung/TLDW/blob/main/environment.yml] file and our [requirements.txt][https://github.com/JoobeeJung/TLDW/blob/main/requirements.txt] file.
+Our application is built on various Python packages with specific version requirements. Installing these packages individually can cause conflicts and require dependencies in your workspace. To fix this issue, it is recommended to use a virtual environment in `conda` with all the necessary packages of our application. A list of necessary packages and libraries can be found in our [environment.yml](https://github.com/JoobeeJung/TLDW/blob/main/environment.yml) file and our [requirements.txt](https://github.com/JoobeeJung/TLDW/blob/main/requirements.txt) file.
 
 To create a new `tldw` Conda environment, run the following command:
 
-`conda env create -f environment.yml`
+```
+conda env create -f environment.yml
+```
 
 Once the Conda environment is created, it can be activated by:
 
-`conda activate tldw`
+```
+conda activate tldw
+```
 
 The environment can be deactivated with the command:
 
-`conda deactivate`
+```
+conda deactivate
+```
 
-*Note: Conda is required to run the above command. For instructions on downloading Conda, please see the [Conda guide][https://conda.io/projects/conda/en/latest/user-guide/install/index.html].*
+*Note: Conda is required to run the above command. For instructions on downloading Conda, please see the [Conda guide](https://conda.io/projects/conda/en/latest/user-guide/install/index.html).*
 
 ## Application
 We developed this application using the open-source `streamlit` package. A local application can be generated with the code:
 
-`conda activate tldw
-streamlit run tldw/streamlit_app.py`
+```
+conda activate tldw
+streamlit run tldw/streamlit_app.py
+```
 
-This will open a new tab in your browser with our functioning web application. More details can be found [here][https://github.com/JoobeeJung/TLDW/blob/main/examples/README.md].
+This will open a new tab in your browser with our functioning web application. More details can be found [here](https://github.com/JoobeeJung/TLDW/blob/main/examples/README.md).
 
 # Examples
 A video demonstration of our application is linked here.
-More details on how to run our code is linked [here][https://github.com/JoobeeJung/TLDW/blob/main/examples/README.md].
+More details on how to run our code are linked [here](https://github.com/JoobeeJung/TLDW/blob/main/examples/README.md).
 
 
 
