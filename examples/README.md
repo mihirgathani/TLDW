@@ -1,7 +1,7 @@
 # Examples
 This folder contains the files for various demonstrations including:
 - Running the website locally
-    - [Clone the Git Repo](https://github.com/JoobeeJung/TLDW/edit/main/examples/README.md=#L15)
+    - [Clone the Git Repo](https://github.com/JoobeeJung/TLDW/edit/main/examples/README.md#L15)
     - Install required packages and libraries
     - Get and input the Gemini API key
     - Run the application
