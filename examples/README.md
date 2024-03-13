@@ -48,7 +48,7 @@ cd TLDW/TLDW
 ```
 
 ### **4. Get and input the Gemini API key**
-Before running the application it is important to generate a Gemini [API Key](https://aistudio.google.com/app/apikey). The API key needs to be placed under TLDW/ in a .env file, assigned to the variable **GEMINI_API_KEY**.
+Before running the application it is important to generate a Gemini [API Key](https://aistudio.google.com/app/apikey). The API key needs to be placed under TLDW/ in a .env file, assigned to the variable **GEMINI_API_KEY**. If you are an authorized user (Professors/TAs/in our group) please refer to this [Google Drive](https://drive.google.com/file/d/1BO4r8aet1pkxneqkwDYSnGjORephlPWr/view) to download a .env file to use in your cloned repository. 
 
 ![Structure of the .env file where the API credentials needs to be stored](https://github.com/JoobeeJung/TLDW/blob/main/examples/images/env.png)
 
