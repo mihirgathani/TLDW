@@ -1,9 +1,8 @@
-name: tldw_env
+name: TLDW
 channels:
   - defaults
 dependencies:
   - python=3
-  - readline
   - setuptools
   - pip
   - pylint

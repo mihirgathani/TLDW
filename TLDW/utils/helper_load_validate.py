@@ -58,12 +58,12 @@ def load_data(ted_or_podcast, test):
 
     if ted_or_podcast == "ted":
         # Load TED Talks Dataset
-        filepath = "../TLDW/data/ted_talks_en.csv"
+        filepath = "./TLDW/TLDW/data/ted_talks_en.csv"
         data_df = pd.read_csv(filepath)
         transcripts = data_df["transcript"].tolist()  # List of transcripts
     else:
         # Load Podcast Dataset
-        filepath = "../TLDW/data/skeptoid_transcripts.csv"
+        filepath = "./TLDW/TLDW/data/skeptoid_transcripts.csv"
         data_df = pd.read_csv(filepath)
         data_df = data_df.dropna(subset=["text"])
         transcripts = data_df["text"].tolist()  # List of transcripts
