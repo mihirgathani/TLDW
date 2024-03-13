@@ -97,6 +97,3 @@ class TestHelperLoadValidate(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             load_data("podcast", 'true')
-
-if __name__ == '__main__':
-    unittest.main()

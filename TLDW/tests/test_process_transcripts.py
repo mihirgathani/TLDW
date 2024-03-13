@@ -86,6 +86,3 @@ class TestProcessTranscripts(unittest.TestCase):
 
         # Assert that the result is not empty
         self.assertNotEqual(result, "", "Transcript should not be empty.")
-
-if __name__ == '__main__':
-    unittest.main()

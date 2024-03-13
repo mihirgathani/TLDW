@@ -157,6 +157,3 @@ class TestMiniLMPreprocess(unittest.TestCase):
         """
         with self.assertRaises(TypeError):
             preprocess_minilm('ted', 'true')
-
-if __name__ == '__main__':
-    unittest.main()

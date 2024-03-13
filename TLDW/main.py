@@ -4,12 +4,7 @@ Module for summarizing and extracting keywords from YouTube video transcripts.
 """
 from utils.process_transcripts import get_transcript
 from utils.summarize_transcripts import get_ai_extract
-#from utils.bert_preprocess import preprocess_bert
-#from utils.bert_get_recommendations import get_bert_recs
-#from utils.minilm_preprocess import preprocess_minilm
-#from utils.minilm_get_recommedations import get_minilm_recs
-#from utils.tdidf_preprocess import preprocess_tdidf
-#from utils.tdidf_get_recommendations import get_tdidf_recs
+
 
 def main():
     """
@@ -22,7 +17,6 @@ def main():
     keywords = get_ai_extract("Generate the top 10 most important keywords: ", transcript)
     print("This is the summary of the transcript:")
     print(summary)
-    print("----------------------------------------------------------------")
     print("These are the top 10 keywords:")
     print(keywords)
 

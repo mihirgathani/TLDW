@@ -16,7 +16,7 @@ class TestTdidfGetRecommendations(unittest.TestCase):
 
     user_transcript = "This is a test transcript."
 
-    with open('tests/user_transcript1.txt', 'r') as file:
+    with open('tests/user_transcript1.txt', 'r', encoding="utf-8") as file:
         user_transcript1 = file.read()
 
     def test_smoke_embeddings_exists_ted(self):
@@ -120,6 +120,3 @@ class TestTdidfGetRecommendations(unittest.TestCase):
         """
         with self.assertRaises(TypeError):
             get_tdidf_recs(self.user_transcript, None)
-
-if __name__ == '__main__':
-    unittest.main()

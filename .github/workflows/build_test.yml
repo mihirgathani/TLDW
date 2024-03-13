@@ -92,7 +92,7 @@ jobs:
       - name: Lint with pylint
         run: |
           pylint --version
-          pylint --fail-under=8.0 TLDW/**/*.py
+          pylint TLDW/**/*.py
 
       # Next step: run the unit tests with code coverage.
       - name: Unit tests
