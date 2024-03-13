@@ -21,34 +21,32 @@ class TestGetSearchResult(unittest.TestCase):
         """
         Smoke test with mocking LLMs response
         """
-        try:
-            mock_chat_generative_ai_instance = MagicMock()
-            mock_chat_generative_ai_instance.invoke.return_value = "Mocked response"
-            mock_chat_generative_ai.return_value = mock_chat_generative_ai_instance
 
-            mock_search_run_instance = MagicMock()
-            mock_search_run_instance.run.return_value = "Mocked search result"
-            mock_search_run.return_value = mock_search_run_instance
+        mock_chat_generative_ai_instance = MagicMock()
+        mock_chat_generative_ai_instance.invoke.return_value = "Mocked response"
+        mock_chat_generative_ai.return_value = mock_chat_generative_ai_instance
 
-            mock_initialize_agent_instance = MagicMock()
-            mock_initialize_agent_instance.run.return_value = "Mocked agent response"
-            mock_initialize_agent.return_value = mock_initialize_agent_instance
+        mock_search_run_instance = MagicMock()
+        mock_search_run_instance.run.return_value = "Mocked search result"
+        mock_search_run.return_value = mock_search_run_instance
 
-            # Mock Streamlit session state
-            mock_st.session_state = MagicMock()
-            mock_st.session_state.messages = []
+        mock_initialize_agent_instance = MagicMock()
+        mock_initialize_agent_instance.run.return_value = "Mocked agent response"
+        mock_initialize_agent.return_value = mock_initialize_agent_instance
 
-            # Mock user input
-            context = "Mocked context"
-            user_prompt = "Mocked user prompt"
+        # Mock Streamlit session state
+        mock_st.session_state = MagicMock()
+        mock_st.session_state.messages = []
 
-            # Call the function
-            result = get_search_result(context, user_prompt)
+        # Mock user input
+        context = "Mocked context"
+        user_prompt = "Mocked user prompt"
 
-            # Assertions
-            self.assertNotEqual(result, "", "Result should not be empty.")
-        except (ValueError, TypeError) as err:
-            print(f"got an error {err}")
+        # Call the function
+        result = get_search_result(context, user_prompt)
+
+        # Assertions
+        self.assertNotEqual(result, "", "Result should not be empty.")
 
     @patch("utils.chat_to_search.ChatGoogleGenerativeAI")
     @patch("utils.chat_to_search.initialize_agent")
@@ -57,35 +55,32 @@ class TestGetSearchResult(unittest.TestCase):
     # pylint: disable=line-too-long
     def test_get_search_no_context(self, mock_st, mock_search_run, mock_initialize_agent, mock_chat_generative_ai):
         """
-        Smoke test with mocking LLMs response
+        Edge test with no context
         """
-        try:
-            mock_chat_generative_ai_instance = MagicMock()
-            mock_chat_generative_ai_instance.invoke.return_value = "Mocked response"
-            mock_chat_generative_ai.return_value = mock_chat_generative_ai_instance
 
-            mock_search_run_instance = MagicMock()
-            mock_search_run_instance.run.return_value = "Mocked search result"
-            mock_search_run.return_value = mock_search_run_instance
+        mock_chat_generative_ai_instance = MagicMock()
+        mock_chat_generative_ai_instance.invoke.return_value = "Mocked response"
+        mock_chat_generative_ai.return_value = mock_chat_generative_ai_instance
 
-            mock_initialize_agent_instance = MagicMock()
-            mock_initialize_agent_instance.run.return_value = "Mocked agent response"
-            mock_initialize_agent.return_value = mock_initialize_agent_instance
+        mock_search_run_instance = MagicMock()
+        mock_search_run_instance.run.return_value = "Mocked search result"
+        mock_search_run.return_value = mock_search_run_instance
 
-            # Mock Streamlit session state
-            mock_st.session_state = MagicMock()
-            mock_st.session_state.messages = []
+        mock_initialize_agent_instance = MagicMock()
+        mock_initialize_agent_instance.run.return_value = "Mocked agent response"
+        mock_initialize_agent.return_value = mock_initialize_agent_instance
 
-            # Mock user input
-            context = ""
-            user_prompt = "Mocked user prompt"
+        # Mock Streamlit session state
+        mock_st.session_state = MagicMock()
+        mock_st.session_state.messages = []
 
-            # Assertions
-            with self.assertRaises(TypeError):
-                get_search_result(context, user_prompt)
+        # Mock user input
+        context = ""
+        user_prompt = "Mocked user prompt"
 
-        except (ValueError, TypeError) as err:
-            print(f"got an error {err}")
+        # Assertions
+        with self.assertRaises(TypeError):
+            get_search_result(context, user_prompt)
 
     @patch("utils.chat_to_search.ChatGoogleGenerativeAI")
     @patch("utils.chat_to_search.initialize_agent")
@@ -94,35 +89,31 @@ class TestGetSearchResult(unittest.TestCase):
     # pylint: disable=line-too-long
     def test_get_search_no_prompt(self, mock_st, mock_search_run, mock_initialize_agent, mock_chat_generative_ai):
         """
-        Smoke test with mocking LLMs response
-        """
-        try:
-            mock_chat_generative_ai_instance = MagicMock()
-            mock_chat_generative_ai_instance.invoke.return_value = "Mocked response"
-            mock_chat_generative_ai.return_value = mock_chat_generative_ai_instance
+        Edge test with no prompt
+    """
+        mock_chat_generative_ai_instance = MagicMock()
+        mock_chat_generative_ai_instance.invoke.return_value = "Mocked response"
+        mock_chat_generative_ai.return_value = mock_chat_generative_ai_instance
 
-            mock_search_run_instance = MagicMock()
-            mock_search_run_instance.run.return_value = "Mocked search result"
-            mock_search_run.return_value = mock_search_run_instance
+        mock_search_run_instance = MagicMock()
+        mock_search_run_instance.run.return_value = "Mocked search result"
+        mock_search_run.return_value = mock_search_run_instance
 
-            mock_initialize_agent_instance = MagicMock()
-            mock_initialize_agent_instance.run.return_value = "Mocked agent response"
-            mock_initialize_agent.return_value = mock_initialize_agent_instance
+        mock_initialize_agent_instance = MagicMock()
+        mock_initialize_agent_instance.run.return_value = "Mocked agent response"
+        mock_initialize_agent.return_value = mock_initialize_agent_instance
 
-            # Mock Streamlit session state
-            mock_st.session_state = MagicMock()
-            mock_st.session_state.messages = []
+        # Mock Streamlit session state
+        mock_st.session_state = MagicMock()
+        mock_st.session_state.messages = []
 
-            # Mock user input
-            context = "Mocked context"
-            user_prompt = ""
+        # Mock user input
+        context = "Mocked context"
+        user_prompt = ""
 
-            # Assertions
-            with self.assertRaises(TypeError):
-                get_search_result(context, user_prompt)
-
-        except (ValueError, TypeError) as err:
-            print(f"got an error {err}")
+        # Assertions
+        with self.assertRaises(TypeError):
+            get_search_result(context, user_prompt)
 
     @patch("utils.chat_to_search.ChatGoogleGenerativeAI")
     @patch("utils.chat_to_search.initialize_agent")
@@ -131,31 +122,27 @@ class TestGetSearchResult(unittest.TestCase):
     # pylint: disable=line-too-long
     def test_get_search_no_input(self, mock_st, mock_search_run, mock_initialize_agent, mock_chat_generative_ai):
         """
-        Smoke test with mocking LLMs response
+        Edge test with no user input
         """
-        try:
-            mock_chat_generative_ai_instance = MagicMock()
-            mock_chat_generative_ai_instance.invoke.return_value = "Mocked response"
-            mock_chat_generative_ai.return_value = mock_chat_generative_ai_instance
+        mock_chat_generative_ai_instance = MagicMock()
+        mock_chat_generative_ai_instance.invoke.return_value = "Mocked response"
+        mock_chat_generative_ai.return_value = mock_chat_generative_ai_instance
 
-            mock_search_run_instance = MagicMock()
-            mock_search_run_instance.run.return_value = "Mocked search result"
-            mock_search_run.return_value = mock_search_run_instance
+        mock_search_run_instance = MagicMock()
+        mock_search_run_instance.run.return_value = "Mocked search result"
+        mock_search_run.return_value = mock_search_run_instance
 
-            mock_initialize_agent_instance = MagicMock()
-            mock_initialize_agent_instance.run.return_value = "Mocked agent response"
-            mock_initialize_agent.return_value = mock_initialize_agent_instance
+        mock_initialize_agent_instance = MagicMock()
+        mock_initialize_agent_instance.run.return_value = "Mocked agent response"
+        mock_initialize_agent.return_value = mock_initialize_agent_instance
 
-            # Mock Streamlit session state
-            mock_st.session_state = MagicMock()
-            mock_st.session_state.messages = []
+        # Mock Streamlit session state
+        mock_st.session_state = MagicMock()
+        mock_st.session_state.messages = []
 
-            context = ""
-            user_prompt = ""
+        context = ""
+        user_prompt = ""
 
-            # Assertions
-            with self.assertRaises(TypeError):
-                get_search_result(context, user_prompt)
-
-        except (ValueError, TypeError) as err:
-            print(f"got an error {err}")
+        # Assertions
+        with self.assertRaises(TypeError):
+            get_search_result(context, user_prompt)
