@@ -52,7 +52,7 @@ class TestHelperLoadValidate(unittest.TestCase):
         Test the functionality of load_data function.
         """
         # TED
-        expected_output_path = './TLDW/data/ted_talks_en.csv'
+        expected_output_path = '../TLDW/data/ted_talks_en.csv'
         self.assertTrue(os.path.exists(expected_output_path))
 
         # Test is true
@@ -70,7 +70,7 @@ class TestHelperLoadValidate(unittest.TestCase):
         assert len(transcripts) == 4005
 
         # Podcast
-        expected_output_path = './TLDW/data/skeptoid_transcripts.csv'
+        expected_output_path = '../TLDW/data/skeptoid_transcripts.csv'
         self.assertTrue(os.path.exists(expected_output_path))
 
         # Test is true

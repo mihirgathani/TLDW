@@ -35,13 +35,13 @@ def get_bert_recs(user_transcript, ted_or_podcast):
 
     if ted_or_podcast == "ted":
         # Load preprocessed TED Talks embeddings and TED Dataset
-        embeddings = torch.load('./TLDW/data/ted_sbert_embeddings.pt')
-        filepath = "./TLDW/data/ted_talks_en.csv"
+        embeddings = torch.load('../TLDW/data/ted_sbert_embeddings.pt')
+        filepath = "../TLDW/data/ted_talks_en.csv"
         data_df = pd.read_csv(filepath)
     else:
         # Load preprocessed Podcast Talks embeddings and Podcast Dataset
-        embeddings = torch.load('./TLDW/data/podcast_sbert_embeddings.pt')
-        filepath = "./TLDW/data/skeptoid_transcripts.csv"
+        embeddings = torch.load('../TLDW/data/podcast_sbert_embeddings.pt')
+        filepath = "../TLDW/data/skeptoid_transcripts.csv"
         data_df = pd.read_csv(filepath)
 
     titles = data_df["title"].tolist()  # List of titles

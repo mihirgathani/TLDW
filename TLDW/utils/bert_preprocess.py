@@ -48,7 +48,7 @@ def preprocess_bert(ted_or_podcast, test):
         else:
             torch.save(embeddings, output_path + 'test_podcast_sbert_embeddings.pt')
     else:
-        output_path = './TLDW/data/'
+        output_path = '../TLDW/data/'
         if ted_or_podcast == "ted":
             torch.save(embeddings, output_path + 'ted_sbert_embeddings.pt')
         else:
