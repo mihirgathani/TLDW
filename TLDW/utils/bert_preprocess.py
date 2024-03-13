@@ -27,10 +27,10 @@ def preprocess_bert(ted_or_podcast, test):
     Returns:
     None
     """
-    
+
     if not isinstance(test, bool):
         raise TypeError("test must be a boolean")
-    
+
     _, transcripts = helper_load_validate.load_data(ted_or_podcast, test)
 
     # Load pre-trained Roberta model
