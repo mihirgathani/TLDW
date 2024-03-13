@@ -50,7 +50,7 @@ def preprocess_tdidf(ted_or_podcast, test):
             joblib.dump(tfidf_vectorizer, output_path + 'test_podcast_tfidf_vectorizer.joblib')
     else:
         # Save the preprocessed DataFrame and TF-IDF vectorizer to files
-        output_path = './TLDW/TLDW/data/'
+        output_path = './TLDW/data/'
         if ted_or_podcast == "ted":
             data_df.to_csv(output_path + 'ted_tdidf_preprocessed.csv', index=False)
             joblib.dump(tfidf_vectorizer, output_path + 'ted_tfidf_vectorizer.joblib')
