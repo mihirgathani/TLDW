@@ -203,6 +203,3 @@ class TestTdidfPreprocess(unittest.TestCase):
         """
         with self.assertRaises(TypeError):
             preprocess_tdidf('ted', 'true')
-
-if __name__ == '__main__':
-    unittest.main()

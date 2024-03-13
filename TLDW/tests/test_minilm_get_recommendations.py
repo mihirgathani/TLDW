@@ -119,6 +119,3 @@ class TestMiniGetRecommendations(unittest.TestCase):
         """
         with self.assertRaises(TypeError):
             get_minilm_recs(self.user_transcript, None)
-
-if __name__ == '__main__':
-    unittest.main()

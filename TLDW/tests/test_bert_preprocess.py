@@ -140,6 +140,3 @@ class TestBertPreprocess(unittest.TestCase):
         """
         with self.assertRaises(TypeError):
             preprocess_bert('ted', 'true')
-
-if __name__ == '__main__':
-    unittest.main()

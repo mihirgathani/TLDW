@@ -120,6 +120,3 @@ class TestTdidfGetRecommendations(unittest.TestCase):
         """
         with self.assertRaises(TypeError):
             get_tdidf_recs(self.user_transcript, None)
-
-if __name__ == '__main__':
-    unittest.main()

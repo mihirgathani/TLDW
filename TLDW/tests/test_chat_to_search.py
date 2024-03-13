@@ -77,11 +77,12 @@ class TestGetSearchResult(unittest.TestCase):
             mock_st.session_state.messages = []
 
             # Mock user input
+            context = ""
             user_prompt = "Mocked user prompt"
 
             # Assertions
             with self.assertRaises(TypeError):
-                get_search_result(user_prompt = user_prompt)
+                get_search_result(context, user_prompt)
 
         except (ValueError, TypeError) as err:
             print(f"got an error {err}")
@@ -114,10 +115,12 @@ class TestGetSearchResult(unittest.TestCase):
 
             # Mock user input
             context = "Mocked context"
+            user_prompt = ""
 
             # Assertions
             with self.assertRaises(TypeError):
-                get_search_result(context = context)
+                get_search_result(context, user_prompt)
+
         except (ValueError, TypeError) as err:
             print(f"got an error {err}")
 
@@ -147,11 +150,12 @@ class TestGetSearchResult(unittest.TestCase):
             mock_st.session_state = MagicMock()
             mock_st.session_state.messages = []
 
+            context = ""
+            user_prompt = ""
+
             # Assertions
             with self.assertRaises(TypeError):
-                get_search_result()
+                get_search_result(context, user_prompt)
+
         except (ValueError, TypeError) as err:
             print(f"got an error {err}")
-
-if __name__ == '__main__':
-    unittest.main()

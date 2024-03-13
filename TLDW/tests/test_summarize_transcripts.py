@@ -86,6 +86,3 @@ class TestGetAIExtract(unittest.TestCase):
         # Assert that the result is not empty
         self.assertNotEqual(result, "", "Result should not be empty.")
         # Add more assertions if needed
-
-if __name__ == '__main__':
-    unittest.main()

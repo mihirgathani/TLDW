@@ -119,6 +119,3 @@ class TestBertGetRecommendations(unittest.TestCase):
         """
         with self.assertRaises(TypeError):
             get_bert_recs(self.user_transcript, None)
-
-if __name__ == '__main__':
-    unittest.main()

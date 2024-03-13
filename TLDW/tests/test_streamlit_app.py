@@ -172,6 +172,3 @@ class TestStreamlitApp(unittest.TestCase):
         self.app_test.button[2].click().run()
         self.assertEqual(self.app_test.header[2].value, "Top 3 TF-IDF Recommendations")
         self.assertIsNotNone(self.app_test.get("expandable"))
-
-if __name__ == "__main__":
-    unittest.main()
