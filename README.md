@@ -192,7 +192,8 @@ We developed this application using the open-source `streamlit` package. A local
 
 ```
 conda activate TLDW
-streamlit run TLDW/TLDW/streamlit_app.py
+cd TLDW/TLDW
+streamlit run streamlit_app.py
 ```
 
 This will open a new tab in your browser with our functioning web application. More details can be found [here](https://github.com/JoobeeJung/TLDW/blob/main/examples/README.md).
