@@ -163,6 +163,7 @@ git clone https://github.com/JoobeeJung/TLDW.git
 
 *Note: Git is required to run the above command. For instructions on downloading Git, please see the [GitHub guide](https://github.com/git-guides/install-git).*
 
+
 ## Environment
 Our application is built on various Python packages with specific version requirements. Installing these packages individually can cause conflicts and require dependencies in your workspace. To fix this issue, it is recommended to use a virtual environment in `conda` with all the necessary packages of our application. A list of necessary packages and libraries can be found in our [environment.yml](https://github.com/JoobeeJung/TLDW/blob/main/environment.yml) file and our [requirements.txt](https://github.com/JoobeeJung/TLDW/blob/main/requirements.txt) file.
 
@@ -196,13 +197,14 @@ streamlit run tldw/streamlit_app.py
 
 This will open a new tab in your browser with our functioning web application. More details can be found [here](https://github.com/JoobeeJung/TLDW/blob/main/examples/README.md).
 
+## API Keys
+This is a link for an API key for Google API. [Google Drive](https://drive.google.com/file/d/1BO4r8aet1pkxneqkwDYSnGjORephlPWr/view?usp=sharing).
+
 # Examples
 A video demonstration of our application is linked here.
 More details on how to run our code are linked [here](https://github.com/JoobeeJung/TLDW/blob/main/examples/README.md).
 
-
-
-
-
+## Issues
+There are some bugs related to Streamlit or the GEMINI API. These issues are linked to [Github Issues](https://github.com/JoobeeJung/TLDW/issues) on this repository. 
 
 
