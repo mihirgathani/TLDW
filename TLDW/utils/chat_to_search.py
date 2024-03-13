@@ -7,8 +7,9 @@ import streamlit as st
 # Gemini API
 from langchain_google_genai import ChatGoogleGenerativeAI, HarmBlockThreshold, HarmCategory
 from langchain.agents import initialize_agent, AgentType
+from langchain.callbacks.streamlit.streamlit_callback_handler import StreamlitCallbackHandler
 from langchain_community.tools.ddg_search.tool import DuckDuckGoSearchRun
-from langchain_community.callbacks import StreamlitCallbackHandler
+# from langchain_community.callbacks import StreamlitCallbackHandler
 
 # .env
 from dotenv import load_dotenv

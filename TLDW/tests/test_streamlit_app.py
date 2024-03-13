@@ -125,6 +125,7 @@ class TestStreamlitApp(unittest.TestCase):
     @patch('utils.process_transcripts.get_transcript')
     @patch('utils.summarize_transcripts.get_ai_extract')
     @patch('utils.minilm_get_recommedations.get_minilm_recs')
+    # pylint: disable=line-too-long
     def test_minilm_recommender(self, mock_get_transcript, mock_get_ai_extract, mock_get_minilm_recs):
         """
         Test case to verify MiniLM recommender behavior.
