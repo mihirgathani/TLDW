@@ -4,7 +4,7 @@
 Test suite for the chat_to_search module.
 """
 import unittest
-from unittest.mock import patch
+#from unittest.mock import patch
 from unittest.mock import patch, MagicMock
 from utils.chat_to_search import get_search_result
 

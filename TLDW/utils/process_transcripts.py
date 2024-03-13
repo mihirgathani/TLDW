@@ -34,8 +34,8 @@ def get_video_id(youtube_url):
         raise ValueError("Video id for input video cannot be blank")
     #if len(video_id) != 11:
      #   raise ValueError("Video ID needs to have 11 characters")
-    if not video_id[:11].isalnum():
-        raise ValueError("Video ID is not correct")
+   # if not video_id[:11].isalnum():
+    #    raise ValueError("Video ID is not correct")
     if DEBUG_MODE: # check this
         print("Video ID: " + video_id)
     return video_id

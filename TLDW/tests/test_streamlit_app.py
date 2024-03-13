@@ -4,17 +4,18 @@ Test module for the Streamlit App.
 This module contains unit tests to verify the behavior of the Streamlit App.
 """
 import unittest
+from unittest.mock import patch
 import pandas as pd
 from streamlit.testing.v1 import AppTest
-from unittest.mock import patch
 
 
-from utils.process_transcripts import get_transcript
-from utils.summarize_transcripts import get_ai_extract
-from utils.bert_get_recommendations import get_bert_recs
-from utils.minilm_get_recommedations import get_minilm_recs
-from utils.tdidf_get_recommendations import get_tdidf_recs
-from utils.chat_to_search import get_search_result
+
+#from utils.process_transcripts import get_transcript
+#from utils.summarize_transcripts import get_ai_extract
+#from utils.bert_get_recommendations import get_bert_recs
+##from utils.minilm_get_recommedations import get_minilm_recs
+#from utils.tdidf_get_recommendations import get_tdidf_recs
+#from utils.chat_to_search import get_search_result
 
 
 class TestStreamlitApp(unittest.TestCase):
