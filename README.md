@@ -28,11 +28,11 @@ Team Members:
 
 ## Tasks of Interest
 - **Youtube Video Summary and Keyword Generator**
-  * Implement a feature to extract key insights and main themes from the YouTube video transcript, providing users with a concise summary and relevant keywords.
+  * This feature allows the user to input a YouTube link and extract key insights and main themes from the YouTube video transcript. It does so by providing a concise summary of the video alongside top 10 relevant keywords.
 - **Recommendation System for TED Talks and Podcasts**
-  * Develop algorithms to analyze the content of TED Talks and podcasts, identifying similarities and relevance to the topic discussed in the YouTube video
+  * This feature allows the user to select whether they want to get recommendations for TED talks or podcasts based on their provided YouTube video. It then let's the user choose between 3 different models to get the top 3 recommendations. 
 - **Chatbot to learn more content**
-  * Create a conversational AI interface that engages users in natural language interactions, allowing them to learn more about specific aspects of the content, explore related topics, and receive informative responses in real time.
+  * This feature enables a conversational AI interface that engages users in natural language interactions, allowing them to learn more about specific aspects of the content, explore related topics, and receive informative responses in real time.
 
 ## Questions of Interest
 - What Ted Talks or Podcasts can I watch to learn more about the YouTube video I just watched?
@@ -43,7 +43,7 @@ Team Members:
 - Youtube Transcript API: to obtain transcripts of a YouTube video based on its link
 - Ted Talks Transcript: https://www.kaggle.com/datasets/miguelcorraljr/ted-ultimate-dataset 
 - Podcast Transcript Dataset: https://www.kaggle.com/datasets/sentinel3734/skeptoid-podcast-transcripts
-- ChatGPT API: to create the summaries from the inputted YouTube video link
+- [Gemini API](https://ai.google.dev/): to generate summary and keywords from the inputted YouTube video link. Also used for the chatbot.
 
 ## Repository Structure 
 ```
