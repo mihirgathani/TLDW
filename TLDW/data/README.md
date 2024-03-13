@@ -50,7 +50,15 @@ Contains transcripts of podcasts. Provides additional content for recommending p
 | url              | Link to the episode page               | string    |
 
 ## Generated Embeddings
-TBD!
+We generate embeddings for the two datasets beforehand to facilitate live recommendations later, enabling quicker retrieval and comparison of similar content based on semantic similarity, thus enhancing the real-time user experience.
+1. podcast_sbert_embeddings.pt: PyTorch file containing embeddings generated using Roberata model for podcast transcripts.
+2. podcast_sentTrans_embeddings.pkl: Pickle file storing sentence-level embeddings obtained from minilm model for podcast transcripts.
+3. podcast_tdidf_preprocessed.csv: Preprocessed CSV file of podcast transcripts after TF-IDF transformation.
+4. podcast_tfidf_vectorizer.joblib: Joblib file storing TF-IDF vectorizer used for podcast transcript preprocessing.
+5. ted_sbert_embeddings.pt: PyTorch file containing embeddings generated using Roberta model for TED talk transcripts.
+6. ted_sentTrans_embeddings.pkl: Pickle file storing sentence-level embeddings obtained from minilm model for TED talk transcripts.
+7. ted_tdidf_preprocessed.csv: Preprocessed CSV file of TED talk transcripts after TF-IDF transformation.
+8. ted_tfidf_vectorizer.joblib: Joblib file storing TF-IDF vectorizer used for TED talk transcript preprocessing.
 
 ## APIs
 **Youtube Transcript API**
