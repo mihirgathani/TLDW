@@ -23,28 +23,28 @@ class TestMiniGetRecommendations(unittest.TestCase):
         """
         Test if the required embedding file for TED Talks exists.
         """
-        expected_output_path = '../TLDW/data/ted_sentTrans_embeddings.pkl'
+        expected_output_path = '/workspaces/TLDW/TLDW/data/ted_sentTrans_embeddings.pkl'
         self.assertTrue(os.path.exists(expected_output_path))
 
     def test_smoke_data_exists_ted(self):
         """
         Test if the required data file for TED Talks exists.
         """
-        expected_datafile_path = "../TLDW/data/ted_talks_en.csv"
+        expected_datafile_path = "/workspaces/TLDW/TLDW/data/ted_talks_en.csv"
         self.assertTrue(os.path.exists(expected_datafile_path))
 
     def test_smoke_embeddings_exists_podcast(self):
         """
         Test if the required embedding file for podcast exists.
         """
-        expected_output_path = '../TLDW/data/podcast_sentTrans_embeddings.pkl'
+        expected_output_path = '/workspaces/TLDW/TLDW/data/podcast_sentTrans_embeddings.pkl'
         self.assertTrue(os.path.exists(expected_output_path))
 
     def test_smoke_data_exists_podcast(self):
         """
         Test if the required data file for TED Talks exists.
         """
-        expected_datafile_path = "../TLDW/data/skeptoid_transcripts.csv"
+        expected_datafile_path = "/workspaces/TLDW/TLDW/data/skeptoid_transcripts.csv"
         self.assertTrue(os.path.exists(expected_datafile_path))
 
     def test_smoke_ted(self):

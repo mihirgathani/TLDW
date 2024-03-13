@@ -51,7 +51,7 @@ def preprocess_minilm(ted_or_podcast, test):
             embeddings.append(transcript_embedding)
 
     if test:
-        output_path = '../TLDW/tests/test_output/'
+        output_path = '/workspaces/TLDW/TLDW/tests/test_output/'
         if ted_or_podcast == "ted":
             with open(output_path + 'test_ted_sentTrans_embeddings.pkl', 'wb') as file:
                 pickle.dump(embeddings, file)
@@ -60,7 +60,7 @@ def preprocess_minilm(ted_or_podcast, test):
                 pickle.dump(embeddings, file)
     else:
         # Save embeddings to a file
-        output_path = '../TLDW/data/'
+        output_path = '/workspaces/TLDW/TLDW/data/'
         if ted_or_podcast == "ted":
             with open(output_path + 'ted_sentTrans_embeddings.pkl', 'wb') as file:
                 pickle.dump(embeddings, file)

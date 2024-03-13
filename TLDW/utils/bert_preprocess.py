@@ -42,13 +42,13 @@ def preprocess_bert(ted_or_podcast, test):
 
     # Save the embeddings to a file
     if test:
-        output_path = '../TLDW/tests/test_output/'
+        output_path = '/workspaces/TLDW/TLDW/tests/test_output/'
         if ted_or_podcast == "ted":
             torch.save(embeddings, output_path + 'test_ted_sbert_embeddings.pt')
         else:
             torch.save(embeddings, output_path + 'test_podcast_sbert_embeddings.pt')
     else:
-        output_path = '../TLDW/data/'
+        output_path = '/workspaces/TLDW/TLDW/data/'
         if ted_or_podcast == "ted":
             torch.save(embeddings, output_path + 'ted_sbert_embeddings.pt')
         else:

@@ -86,14 +86,14 @@ def load_data(ted_or_podcast):
     """
     if ted_or_podcast == "ted":
         # Load TED Talks Dataset
-        data_df = pd.read_csv("../TLDW/data/ted_talks_en.csv")
-        with open('../TLDW/data/ted_sentTrans_embeddings.pkl', 'rb') as file:
+        data_df = pd.read_csv("/workspaces/TLDW/TLDW/data/ted_talks_en.csv")
+        with open('/workspaces/TLDW/TLDW/data/ted_sentTrans_embeddings.pkl', 'rb') as file:
             embeddings = pickle.load(file)
     else:
         # Load Podcast Dataset
-        data_df = pd.read_csv("../TLDW/data/skeptoid_transcripts.csv")
+        data_df = pd.read_csv("/workspaces/TLDW/TLDW/data/skeptoid_transcripts.csv")
         data_df = data_df.dropna(subset=['text'])
-        with open('../TLDW/data/podcast_sentTrans_embeddings.pkl', 'rb') as file:
+        with open('/workspaces/TLDW/TLDW/data/podcast_sentTrans_embeddings.pkl', 'rb') as file:
             embeddings = pickle.load(file)
 
     titles = data_df["title"].tolist()
