@@ -198,7 +198,7 @@ streamlit run tldw/streamlit_app.py
 This will open a new tab in your browser with our functioning web application. More details can be found [here](https://github.com/JoobeeJung/TLDW/blob/main/examples/README.md).
 
 ## API Keys
-This is a link for an API key for Google API. [Google Drive](https://drive.google.com/file/d/1BO4r8aet1pkxneqkwDYSnGjORephlPWr/view?usp=sharing).
+This is a [Google Drive](https://drive.google.com/file/d/1BO4r8aet1pkxneqkwDYSnGjORephlPWr/view?usp=sharing) link for an API key for Google API.
 
 # Examples
 A video demonstration of our application is linked here.
