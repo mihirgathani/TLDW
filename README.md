@@ -163,10 +163,11 @@ git clone https://github.com/JoobeeJung/TLDW.git
 
 *Note: Git is required to run the above command. For instructions on downloading Git, please see the [GitHub guide](https://github.com/git-guides/install-git).*
 
+
 ## Environment
 Our application is built on various Python packages with specific version requirements. Installing these packages individually can cause conflicts and require dependencies in your workspace. To fix this issue, it is recommended to use a virtual environment in `conda` with all the necessary packages of our application. A list of necessary packages and libraries can be found in our [environment.yml](https://github.com/JoobeeJung/TLDW/blob/main/environment.yml) file and our [requirements.txt](https://github.com/JoobeeJung/TLDW/blob/main/requirements.txt) file.
 
-To create a new `tldw` Conda environment, run the following command:
+To create a new `TLDW` Conda environment, run the following command:
 
 ```
 conda env create -f environment.yml
@@ -175,7 +176,7 @@ conda env create -f environment.yml
 Once the Conda environment is created, it can be activated by:
 
 ```
-conda activate tldw
+conda activate TLDW
 ```
 
 The environment can be deactivated with the command:
@@ -190,19 +191,21 @@ conda deactivate
 We developed this application using the open-source `streamlit` package. A local application can be generated with the code:
 
 ```
-conda activate tldw
-streamlit run tldw/streamlit_app.py
+conda activate TLDW
+cd TLDW/TLDW
+streamlit run streamlit_app.py
 ```
 
 This will open a new tab in your browser with our functioning web application. More details can be found [here](https://github.com/JoobeeJung/TLDW/blob/main/examples/README.md).
+
+## API Keys
+This is a [Google Drive](https://drive.google.com/file/d/1BO4r8aet1pkxneqkwDYSnGjORephlPWr/view?usp=sharing) link for an API key for Google API.
 
 # Examples
 A video demonstration of our application is linked here.
 More details on how to run our code are linked [here](https://github.com/JoobeeJung/TLDW/blob/main/examples/README.md).
 
-
-
-
-
+## Issues
+There are some bugs related to Streamlit or the GEMINI API. These issues are linked to [Github Issues](https://github.com/JoobeeJung/TLDW/issues) on this repository. 
 
 
