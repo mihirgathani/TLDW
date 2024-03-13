@@ -1,13 +1,20 @@
+"""
+TLDW/main.py
+Module for summarizing and extracting keywords from YouTube video transcripts.
+"""
 from utils.process_transcripts import get_transcript
-from utils.summarize_transcripts import get_ai_extract 
-from utils.bert_preprocess import preprocess_bert
-from utils.bert_get_recommendations import get_bert_recs
-from utils.minilm_preprocess import preprocess_minilm
-from utils.minilm_get_recommedations import get_minilm_recs
-from utils.tdidf_preprocess import preprocess_tdidf
-from utils.tdidf_get_recommendations import get_tdidf_recs
+from utils.summarize_transcripts import get_ai_extract
+#from utils.bert_preprocess import preprocess_bert
+#from utils.bert_get_recommendations import get_bert_recs
+#from utils.minilm_preprocess import preprocess_minilm
+#from utils.minilm_get_recommedations import get_minilm_recs
+#from utils.tdidf_preprocess import preprocess_tdidf
+#from utils.tdidf_get_recommendations import get_tdidf_recs
 
 def main():
+    """
+    Main function to process YouTube video transcripts, summarize them, and extract keywords.
+    """
     video_url = input("Please enter the YouTube video URL: ")
     transcript = get_transcript(video_url)
     print(transcript)
@@ -39,4 +46,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
