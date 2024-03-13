@@ -40,7 +40,7 @@ def preprocess_tdidf(ted_or_podcast, test):
     [" ".join(tokens) for tokens in tfidf_vectorizer.inverse_transform(tokenized_transcripts)])
 
     if test:
-        output_path = '/workspaces/TLDW/TLDW/tests/test_output/'
+        output_path = '/mount/src/tldw/TLDW/tests/test_output/'
         # Save the preprocessed DataFrame and TF-IDF vectorizer to files
         if ted_or_podcast == "ted":
             data_df.to_csv(output_path + 'test_ted_tdidf_preprocessed.csv', index=False)
@@ -50,7 +50,7 @@ def preprocess_tdidf(ted_or_podcast, test):
             joblib.dump(tfidf_vectorizer, output_path + 'test_podcast_tfidf_vectorizer.joblib')
     else:
         # Save the preprocessed DataFrame and TF-IDF vectorizer to files
-        output_path = '/workspaces/TLDW/TLDW/data/'
+        output_path = '/mount/src/tldw/TLDW/data/'
         if ted_or_podcast == "ted":
             data_df.to_csv(output_path + 'ted_tdidf_preprocessed.csv', index=False)
             joblib.dump(tfidf_vectorizer, output_path + 'ted_tfidf_vectorizer.joblib')

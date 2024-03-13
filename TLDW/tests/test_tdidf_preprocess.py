@@ -23,7 +23,7 @@ class TestTdidfPreprocess(unittest.TestCase):
         mode.
         """
         preprocess_tdidf("ted", True)
-        expected_output_path = '/workspaces/TLDW/TLDW/tests/test_output/test_ted_tdidf_preprocessed.csv'
+        expected_output_path = '/mount/src/tldw/TLDW/tests/test_output/test_ted_tdidf_preprocessed.csv'
         self.assertTrue(os.path.exists(expected_output_path))
 
     def test_smoke_ted_org_embeddings(self):
@@ -31,7 +31,7 @@ class TestTdidfPreprocess(unittest.TestCase):
         Smoke test to ensure that the preprocessed file for the complete TED Talks dataset exists.
         Note: the preprocess_tdidf method is not called due to excessive time requirements.
         """
-        expected_output_path = '/workspaces/TLDW/TLDW/data/ted_tdidf_preprocessed.csv'
+        expected_output_path = '/mount/src/tldw/TLDW/data/ted_tdidf_preprocessed.csv'
         self.assertTrue(os.path.exists(expected_output_path))
 
     def test_smoke_podcast(self):
@@ -40,7 +40,7 @@ class TestTdidfPreprocess(unittest.TestCase):
         mode.
         """
         preprocess_tdidf("podcast", True)
-        expected_output_path = '/workspaces/TLDW/TLDW/tests/test_output/test_podcast_tdidf_preprocessed.csv'
+        expected_output_path = '/mount/src/tldw/TLDW/tests/test_output/test_podcast_tdidf_preprocessed.csv'
         self.assertTrue(os.path.exists(expected_output_path))
 
     def test_smoke_podcast_org_embeddings(self):
@@ -48,7 +48,7 @@ class TestTdidfPreprocess(unittest.TestCase):
         Smoke test to ensure that the preprocessed file for the complete podcast dataset exists.
         Note: the preprocess_tdidf method is not called due to excessive time requirements.
         """
-        expected_output_path = '/workspaces/TLDW/TLDW/data/podcast_tdidf_preprocessed.csv'
+        expected_output_path = '/mount/src/tldw/TLDW/data/podcast_tdidf_preprocessed.csv'
         self.assertTrue(os.path.exists(expected_output_path))
 
     # One Shot tests
@@ -59,8 +59,8 @@ class TestTdidfPreprocess(unittest.TestCase):
         object is correctly saved.
         """
         preprocess_tdidf("ted", True)
-        expected_output_path = '/workspaces/TLDW/TLDW/tests/test_output/test_ted_tdidf_preprocessed.csv'
-        expected_vectorizer_path = '/workspaces/TLDW/TLDW/tests/test_output/test_ted_tfidf_vectorizer.joblib'
+        expected_output_path = '/mount/src/tldw/TLDW/tests/test_output/test_ted_tdidf_preprocessed.csv'
+        expected_vectorizer_path = '/mount/src/tldw/TLDW/tests/test_output/test_ted_tfidf_vectorizer.joblib'
         self.assertTrue(os.path.exists(expected_output_path))
         self.assertTrue(os.path.exists(expected_vectorizer_path))
 
@@ -85,9 +85,9 @@ class TestTdidfPreprocess(unittest.TestCase):
         One shot test to ensure that the preprocessed file for the complete ted dataset is correct.
         This is tested by checking if the file exists and its contents.
         """
-        expected_output_path = '/workspaces/TLDW/TLDW/data/ted_tdidf_preprocessed.csv'
+        expected_output_path = '/mount/src/tldw/TLDW/data/ted_tdidf_preprocessed.csv'
         self.assertTrue(os.path.exists(expected_output_path))
-        expected_vectorizer_path = '/workspaces/TLDW/TLDW/data/ted_tfidf_vectorizer.joblib'
+        expected_vectorizer_path = '/mount/src/tldw/TLDW/data/ted_tfidf_vectorizer.joblib'
         self.assertTrue(os.path.exists(expected_vectorizer_path))
 
         # Check the content of the preprocessed file
@@ -113,8 +113,8 @@ class TestTdidfPreprocess(unittest.TestCase):
         object is correctly saved.
         """
         preprocess_tdidf("podcast", True)
-        expected_output_path = '/workspaces/TLDW/TLDW/tests/test_output/test_podcast_tdidf_preprocessed.csv'
-        expected_vectorizer_path = '/workspaces/TLDW/TLDW/tests/test_output/test_podcast_tfidf_vectorizer.joblib'
+        expected_output_path = '/mount/src/tldw/TLDW/tests/test_output/test_podcast_tdidf_preprocessed.csv'
+        expected_vectorizer_path = '/mount/src/tldw/TLDW/tests/test_output/test_podcast_tfidf_vectorizer.joblib'
         self.assertTrue(os.path.exists(expected_output_path))
         self.assertTrue(os.path.exists(expected_vectorizer_path))
 
@@ -139,9 +139,9 @@ class TestTdidfPreprocess(unittest.TestCase):
         One shot test to ensure that preprocessed file for the complete podcast dataset is correct.
         This is tested by checking if the file exists and its contents.
         """
-        expected_output_path = '/workspaces/TLDW/TLDW/data/podcast_tdidf_preprocessed.csv'
+        expected_output_path = '/mount/src/tldw/TLDW/data/podcast_tdidf_preprocessed.csv'
         self.assertTrue(os.path.exists(expected_output_path))
-        expected_vectorizer_path = '/workspaces/TLDW/TLDW/data/podcast_tfidf_vectorizer.joblib'
+        expected_vectorizer_path = '/mount/src/tldw/TLDW/data/podcast_tfidf_vectorizer.joblib'
         self.assertTrue(os.path.exists(expected_vectorizer_path))
 
         # Check the content of the preprocessed file

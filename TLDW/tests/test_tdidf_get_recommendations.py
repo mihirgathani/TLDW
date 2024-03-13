@@ -23,28 +23,28 @@ class TestTdidfGetRecommendations(unittest.TestCase):
         """
         Test if the required embedding file for TED Talks exists.
         """
-        expected_output_path = '/workspaces/TLDW/TLDW/data/ted_tdidf_preprocessed.csv'
+        expected_output_path = '/mount/src/tldw/TLDW/data/ted_tdidf_preprocessed.csv'
         self.assertTrue(os.path.exists(expected_output_path))
 
     def test_smoke_vectorizer_exists_ted(self):
         """
         Test if the required data file for TED Talks exists.
         """
-        expected_datafile_path = "/workspaces/TLDW/TLDW/data/ted_tfidf_vectorizer.joblib"
+        expected_datafile_path = "/mount/src/tldw/TLDW/data/ted_tfidf_vectorizer.joblib"
         self.assertTrue(os.path.exists(expected_datafile_path))
 
     def test_smoke_embeddings_exists_podcast(self):
         """
         Test if the required embedding file for podcast exists.
         """
-        expected_output_path = '/workspaces/TLDW/TLDW/data/podcast_tdidf_preprocessed.csv'
+        expected_output_path = '/mount/src/tldw/TLDW/data/podcast_tdidf_preprocessed.csv'
         self.assertTrue(os.path.exists(expected_output_path))
 
     def test_smoke_vectorizer_exists_podcast(self):
         """
         Test if the required data file for TED Talks exists.
         """
-        expected_datafile_path = "/workspaces/TLDW/TLDW/data/podcast_tfidf_vectorizer.joblib"
+        expected_datafile_path = "/mount/src/tldw/TLDW/data/podcast_tfidf_vectorizer.joblib"
         self.assertTrue(os.path.exists(expected_datafile_path))
 
     def test_smoke_ted(self):

@@ -26,7 +26,7 @@ class TestBertPreprocess(unittest.TestCase):
         mode.
         """
         preprocess_bert("ted", True)
-        expected_output_path = '/workspaces/TLDW/TLDW/tests/test_output/test_ted_sbert_embeddings.pt'
+        expected_output_path = '/mount/src/tldw/TLDW/tests/test_output/test_ted_sbert_embeddings.pt'
         self.assertTrue(os.path.exists(expected_output_path))
 
     def test_smoke_ted_org_embeddings(self):
@@ -34,7 +34,7 @@ class TestBertPreprocess(unittest.TestCase):
         Smoke test to ensure that embedding file for the complete TED Talks dataset exists.
         Note: the process_bert method is not called due to excessive time requirements.
         """
-        expected_output_path = '/workspaces/TLDW/TLDW/data/ted_sbert_embeddings.pt'
+        expected_output_path = '/mount/src/tldw/TLDW/data/ted_sbert_embeddings.pt'
         self.assertTrue(os.path.exists(expected_output_path))
 
     def test_smoke_podcast(self):
@@ -43,7 +43,7 @@ class TestBertPreprocess(unittest.TestCase):
         mode.
         """
         preprocess_bert("podcast", True)
-        expected_output_path = '/workspaces/TLDW/TLDW/tests/test_output/test_podcast_sbert_embeddings.pt'
+        expected_output_path = '/mount/src/tldw/TLDW/tests/test_output/test_podcast_sbert_embeddings.pt'
         self.assertTrue(os.path.exists(expected_output_path))
 
     def test_smoke_podcast_org_embeddings(self):
@@ -51,7 +51,7 @@ class TestBertPreprocess(unittest.TestCase):
         Smoke test to ensure that embedding file for the complete podcast dataset exists.
         Note: the process_bert method is not called due to excessive time requirements.
         """
-        expected_output_path = '/workspaces/TLDW/TLDW/data/podcast_sbert_embeddings.pt'
+        expected_output_path = '/mount/src/tldw/TLDW/data/podcast_sbert_embeddings.pt'
         self.assertTrue(os.path.exists(expected_output_path))
 
     # One Shot tests
@@ -61,7 +61,7 @@ class TestBertPreprocess(unittest.TestCase):
         This is tested by checking it's shape.
         """
         preprocess_bert("podcast", True)
-        expected_output_path = '/workspaces/TLDW/TLDW/tests/test_output/test_ted_sbert_embeddings.pt'
+        expected_output_path = '/mount/src/tldw/TLDW/tests/test_output/test_ted_sbert_embeddings.pt'
         self.assertTrue(os.path.exists(expected_output_path))
         embeddings = torch.load(expected_output_path)
         assert embeddings.shape == (5, 1024), "Ted Embeddings dimensions mismatch"
@@ -71,7 +71,7 @@ class TestBertPreprocess(unittest.TestCase):
         One shot test to ensure that the embedding file for the complete ted dataset is correct.
         This is tested by checking it's shape.
         """
-        expected_output_path = '/workspaces/TLDW/TLDW/data/ted_sbert_embeddings.pt'
+        expected_output_path = '/mount/src/tldw/TLDW/data/ted_sbert_embeddings.pt'
         self.assertTrue(os.path.exists(expected_output_path))
         embeddings = torch.load(expected_output_path)
         assert embeddings.shape == (4005, 1024), "Ted Embeddings dimensions mismatch"
@@ -82,7 +82,7 @@ class TestBertPreprocess(unittest.TestCase):
         This is tested by checking it's shape.
         """
         preprocess_bert("podcast", True)
-        expected_output_path = '/workspaces/TLDW/TLDW/tests/test_output/test_podcast_sbert_embeddings.pt'
+        expected_output_path = '/mount/src/tldw/TLDW/tests/test_output/test_podcast_sbert_embeddings.pt'
         self.assertTrue(os.path.exists(expected_output_path))
         embeddings = torch.load(expected_output_path)
         assert embeddings.shape == (5, 1024), "Podcast Embeddings dimensions mismatch"
@@ -92,7 +92,7 @@ class TestBertPreprocess(unittest.TestCase):
         One shot test to ensure that the embedding file for the complete podcast dataset is correct.
         This is tested by checking it's shape.
         """
-        expected_output_path = '/workspaces/TLDW/TLDW/data/podcast_sbert_embeddings.pt'
+        expected_output_path = '/mount/src/tldw/TLDW/data/podcast_sbert_embeddings.pt'
         self.assertTrue(os.path.exists(expected_output_path))
         embeddings = torch.load(expected_output_path)
         assert embeddings.shape == (908, 1024), "Podcast Embeddings dimensions mismatch"
