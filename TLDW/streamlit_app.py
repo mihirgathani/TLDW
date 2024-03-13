@@ -59,7 +59,8 @@ def get_transcript_link(link):
         st.error(str(val_err))
     except TypeError as type_err:
         st.error(str(type_err))
-
+    except AttributeError as att_err:
+        pass
 
 # Function to get summary if not already obtained
 def get_summary():
@@ -81,6 +82,8 @@ def get_summary():
         st.error(str(val_err))
     except TypeError as type_err:
         st.error(str(type_err))
+    except AttributeError as att_err:
+        pass
 
 # Function to get keyword if not already obtained
 def get_keyword():
@@ -102,6 +105,8 @@ def get_keyword():
         st.error(str(val_err))
     except TypeError as type_err:
         st.error(str(type_err))
+    except AttributeError as att_err:
+        pass
 
 # Starting information
 st.info(
