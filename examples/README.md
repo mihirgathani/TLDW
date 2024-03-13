@@ -18,7 +18,7 @@ Clone the repository on your local machine using the following command on termin
 git clone https://github.com/JoobeeJung/TLDW.git
 ```
 
-### **2. ## Environment
+### **2. Environment**
 Our application is built on various Python packages with specific version requirements. Installing these packages individually can cause conflicts and require dependencies in your workspace. To fix this issue, it is recommended to use a virtual environment in `conda` with all the necessary packages of our application. A list of necessary packages and libraries can be found in our [environment.yml](https://github.com/JoobeeJung/TLDW/blob/main/environment.yml) file and our [requirements.txt](https://github.com/JoobeeJung/TLDW/blob/main/requirements.txt) file.
 
 To create a new `TLDW` Conda environment, run the following command:
@@ -39,7 +39,7 @@ The environment can be deactivated with the command:
 conda deactivate
 ```
 
-### **3. Application
+### **3. Application**
 We developed this application using the open-source `streamlit` package. A local application can be generated with the code:
 
 ```
