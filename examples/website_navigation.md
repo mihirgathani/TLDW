@@ -7,7 +7,7 @@
 
  - If the video is a valid YouTube video, the website will commence the summarization process. Otherwise, it will display a message to the user indicating that the provided URL is not a valid YouTube video.
 
-![Youtube video being fed to the summarizer](https://github.com/JoobeeJung/TLDW/blob/main/examples/images/input_url.png)
+![Youtube video being fed to the summarizer](https://github.com/JoobeeJung/TLDW/blob/Anu_mar/examples/images/input_url.png)
 
 - Once the summarizer completes its operation successfully, the system informs the user that the process of summarization and extraction of keywords was successful. It then displays the summary as well as top 10 keywords identified by Gemini for the input video.
 
